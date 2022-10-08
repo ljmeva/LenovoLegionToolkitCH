@@ -2,194 +2,191 @@
 
 [![Build](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml) [![Join Discord](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
 
-Lenovo Legion Toolkit (LLT) is a utility created for Lenovo Legion laptops, that allows changing a couple of features that are only available in Lenovo Vantage or Legion Zone.
+Lenovo Legion Toolkit（LLT）是为联想拯救者笔记本电脑打造的轻量工具集，可以实现联想全家桶（如：联想电脑管家、Legion Zone、Lenovo Vantage）中的大部分功能。
 
-**If your laptop is not part of Legion or Ideapad Gaming lines, this software is not for you.**
+**目前仅完美适配拯救者和Ideapad Gaming系列机型，其他机型请自行测试，不承担任何后果**
 
-It runs no background services, uses less memory, uses virtually no CPU, and contains no telemetry. Just like Lenovo Vantage, this application is Windows only.
+该软件仅适用于Windows，无需安装OEM厂商的服务，内存占用小，几乎不占用CPU，并且不收集用户信息。实际工作方式类似Lenovo Vantage向硬件发出命令。
 
-Join the Legion Series Discord: https://discord.com/invite/legionseries!
+海外拯救者系列Discord群组: https://discord.com/invite/legionseries!
 
 <img src="assets/screenshot.png" width="700" alt="PayPal QR code" />
 
-# Table of Contents
-  - [Disclaimer](#disclaimer)
-  - [Donate](#donate)
-  - [Download](#download)
-  - [Compatibility](#compatibility)
-  - [Features](#features)
-  - [Credits](#credits)
+# 目录
+  - [免责声明](#免责声明)
+  - [捐赠](#捐赠)
+  - [下载](#下载)
+  - [兼容性](#兼容性)
+  - [功能介绍](#功能介绍)
+  - [项目基础](#项目基础)
   - [FAQ](#faq)
-  - [How to collect logs?](#how-to-collect-logs)
-  - [Contribution](#contribution)
+  - [如何采集logs](#如何采集logs)
+  - [贡献](#贡献)
 
-## Disclaimer
+## 免责声明
 
-**The tool comes with no warranty. Use at your own risk.**
+**该工具非联想官方提供，用户自行承担风险。**
 
-This is a hobby project. I want to make it available on more devices, but it will take some time, so please be patient and read through this readme carefully.
+这是作者的业余项目，并且作者希望该工具能够在更多设备上使用，但这需要花费时间和精力，如有不足之处请提出Issue或者耐心等待。该README请仔细阅读。
 
-## Donate
+## 捐赠
 
-If you enjoy using the Lenovo Legion Toolkit, consider donating.
+如果这个项目对你有帮助，可以请作者喝杯咖啡~
 
 <a href="https://www.paypal.com/donate/?hosted_button_id=22AZE2NBP3HTL"><img src="LenovoLegionToolkit.WPF/Assets/paypal_button.png" width="200" alt="PayPal Donate" /></a>
 
 <img src="LenovoLegionToolkit.WPF/Assets/paypal_qr.png" width="200" alt="PayPal QR code" />
 
-## Download
+## 下载
 
-You can download the installer from the Releases page here: [Latest release](https://github.com/BartoszCichecki/LenovoLegionToolkit/releases/latest).
+你可以从这里下载安装包: [Latest release](https://github.com/BartoszCichecki/LenovoLegionToolkit/releases/latest).
 
-## Compatibility
+## 兼容性
 
-Lenovo Legion Toolkit is compatible with a lot of Lenovo Legion laptops from 2020, 2021 and 2022 running Windows 10 and 11. All testing done by me is done always on the latest Windows 11 update and Legion 5 Pro 16ACH6H.
+Lenovo Legion Toolkit适用于绝大部分联想拯救者机型，包括2022、2021以及2022的机型，可运行于Windows10和Windows11。作者在搭载最新版Windows 11的Legion 5 Pro 16ACH6H（对应国内R9000P 2021）上完成调试。我在使用Y9000P 2022 Windows 11，全部功能可用。
 
-Overall the recommendation is to disable or uninstall Vantage, Hotkeys and Legion Zone while using LLT. There are some functions that cause conflicts or may not work properly when LLT is working along side other Lenovo apps.
+LLT可能与联想的应用产生冲突，建议在使用时卸载或者禁用联想全家桶（Lenovo Vantage、Lenovo Hotkeys和Legion Zone）。LLT的设置界面提供了禁用的选项。
 
-If you are getting an incompatible message on startup, you can check the *Contribution* section down at the bottom, to see how can you help. Keep in mind, that not always I can make all options compatible with all hardware since I do not have access to it.
+如果你在启动时看到不兼容提示的弹窗，可以查看文档底部的*贡献*部分，协助作者适配你的机型。作者会在未经测试的机器上弹窗并自动收集logs，联想机型众多，作者不可能亲自一个一个去试。
 
-The list of supported models can be found here: [Compatibility.cs](https://github.com/BartoszCichecki/LenovoLegionToolkit/blob/master/LenovoLegionToolkit.Lib/Utils/Compatibility.cs).
+经测试支持的机型: [Compatibility.cs](https://github.com/BartoszCichecki/LenovoLegionToolkit/blob/master/LenovoLegionToolkit.Lib/Utils/Compatibility.cs).
 
-Support for other laptop that are not part of Legion line is not planned.
+暂时不考虑适配非Legion（拯救者）机型。
 
-## Features
+## 功能介绍
 
-The app allows to:
+该软件可以做到:
 
-- Change settings like power mode, battery charging mode, etc. that are available only through Vantage.
-- Access to Custom Mode available only in Legion Zone, including Fan Control on 2022 models.
-- 4-zone RGB and White backlight keyboards support.
-- Change display refresh rate (built-in display only).
-- Deactivate discrete GPU (nVidia only).
-- View battery statistics.
-- Download software updates.
-- Define Actions that will run when the laptop is i.e. connected to AC power.
-- Disable/enable Lenovo Vantage, Legion Zone and Lenovo Hotkeys service without uninstalling it.
+- 调整电源模式、充电模式等只能在Lenovo Vantage（联想电脑管家）中实现的功能。
+- 调整自定义模式，甚至可以调整风扇曲线（在2022机型上）等只能在Legion Zone中实现的功能。
+- 完美支持键盘背光，包括4-zone RGB和白色背光。
+- 更改刷新率（前提是你的屏幕支持）。
+- 停用显卡（仅支持N卡）。
+- 查看电池状态信息。
+- 下载驱动、更新。
+- 自动化：在插电或离电时自动执行设定好的操作集。
+- 禁用/启用联想全家桶（Lenovo Vantage, Legion Zone和Lenovo Hotkeys service）且无需卸载。
 
-##### Deactivate discrete GPU
+##### 停用独显（dGPU）
 
-Sometimes discrete GPU stays active even when it should not. This can happen for example, if you work with an external screen and you disconnect it - some processes will keep running on discrete GPU keeping it alive and shortening battery life.
+禁用独显以提升续航。例如当你拔掉独显连接的显示器时，应用还可能运行在独显上，此时可以使用该功能。
 
-There are two ways to help the GPU deactivate:
+有两种途径停用独显：
 
-1. killing all processes running on dGPU (this one seems to work better),
-2. disabling dGPU for a short amount of time, which will force all processes to move to the integrated GPU.
+1. 杀死所有运行在dGPU上的App (这种方法似乎更有效)；
+2. 短时间内禁用dGPU，让运行的应用转移到集显上。
 
-Deactivate button will be enabled when dGPU is active, you have Hybrid mode enabled and there are no screens connected to dGPU. If you hover over the button, you will see the current P state of dGPU and the list of processes running on it.
+当dGPU处于活动状态，启用混合模式，并且没有屏幕连接到dGPU时，停用按钮才会亮起。如果你将鼠标悬停在该按钮上，你会看到dGPU当前的状态以及在其上运行的进程列表。
 
-Keep in mind that some apps may not like this feature and crash when you deactivate dGPU.
+注意：有些应用可能在停用独显时直接崩溃。
 
-##### Windows Power Plans
+##### Windows电源计划
 
-Lenovo Legion Toolkit will automatically switch Windows power plans when Power Mode changes *and* when Lenovo Vantage is disabled.
+Lenovo Legion Toolkit能够自动在切换电源模式时切换Windows电源计划，*请保证*Lenovo Vantage已被禁用。
 
-On some laptops though, Lenovo Vantage never switched power plans. If you have one of the laptops where Lenovo Vantage does not change Windows power plans automatically you can override this behavior in Settings. This will allow Toolkit to always change Windows power plans, even if Lenovo Vantage is running in the background.
+但在某些笔记本上，Lenovo Vantage并不会切换电源计划。如果你的Lenovo Vantage不会自动切换的话，可以在设置里手动选择不同电源模式对应的电源计划。此时你可以把Vantage挂在后台。
 
-##### CPU Boost Modes
+##### CPU提升模式
 
-This allows modifying the hidden setting of Windows Power Plans called *Processor performance boost mode*. It is a little bit cryptic what these options do, but the best explanation is provided here:
+此选项可以修改Windows电源计划中的隐藏设置——*处理器性能提升模式*。这个名称和选项可能有点费解，好在微软提供了文档你可以看看:
 
 [Power and performance tuning @microsoft.com](https://docs.microsoft.com/en-us/windows-server/administration/performance-tuning/hardware/power/power-performance-tuning#processor-performance-boost-mode)
 
 [ProcessorPerformanceBoostMode @microsoft.com](https://docs.microsoft.com/en-us/dotnet/api/microsoft.windows.eventtracing.power.processorperformanceboostmode?view=trace-processor-dotnet-1.0)
 
-## Credits
+## 项目基础
 
-Special thanks to:
+特别感谢:
 
-* [ViRb3](https://github.com/ViRb3), for creating [Lenovo Controller](https://github.com/ViRb3/LenovoController), which was used as a base for this tool
-* [falahati](https://github.com/falahati), for creating [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) and [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI)
-* [SmokelessCPU](https://github.com/SmokelessCPU) for help with 4-zone RGB keyboard support
+* LLT的基础 —— [ViRb3](https://github.com/ViRb3) —— [Lenovo Controller](https://github.com/ViRb3/LenovoController)
+* 显示相关 —— [falahati](https://github.com/falahati) —— [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) 、 [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI)
+* 4-zone RGB键盘背光 —— [SmokelessCPU](https://github.com/SmokelessCPU)
 
 ## FAQ
 
-#### Why doesn't LLT launch on startup even though Autorun option is enabled?
+#### LLT开机自启失败？
 
-LLT is started using Task Scheduler, so that it can launch with admin rights. Startup is delayed by 1 minutes (30 seconds in version 2.4.0 and up) to allow other components to start and be ready to use. If you don't see LLT in tray after a ~minute after seeing your desktop, create an issue.
+LLT用计划任务实现开机自启，这样可以保证应用的管理员权限。开机后1分钟（2.4.0及以上版本为30s）自启来保证其他应用先启动。如果1分钟后还是没有启动，请提交Issue。
 
-#### My motherboard was replaced and now LLT gives me incompatible massage. What do I do?
+#### 主板换了，LLT提示不兼容的弹窗。我该怎么办？
 
-Sometimes new motherboard does not contain correct model numbers and serial numbers. You should try [this tutorial](https://laptopwiki.eu/index.php/guides-and-tutorials/important-bios-related-guides/recover-original-model-sku-values/) to try and recover them. If that method does not succeed, you can workaround by going to `%LOCALAPPDATA%\LenovoLegionToolkit` and creating an `args.txt` file. Inside that file paste `--skip-compat-check`. This will disable all compatibility checks in LLT. Use this workaround only if correct model number, serial number etc. can't be restored.
+有时新主板的机型和序列号信息可能不正确，尝试[这篇教程](https://laptopwiki.eu/index.php/guides-and-tutorials/important-bios-related-guides/recover-original-model-sku-values/)来恢复。如果这个方法不起作用，请到`%LOCALAPPDATA%\LenovoLegionToolkit`创建`args.txt`文件，并在文件中输入`--skip-compat-check`，该操作将禁用LLT的所有兼容性检查。请勿滥用此操作。
 
-#### I can't find Legion AI Engine option.
+#### 找不到AI引擎的选项？
 
-AI Engine is not supported. It requires Lenovo services to run. I recommend simply switching to Performance mode.
+不支持AI引擎。AI引擎依赖联想的服务。
 
-#### Which RGB types are supported?
+#### 支持哪些RGB类型？
 
-Currently only white-backlight and 4-zone RGB keyboards are supported.
+目前仅支持白色背光和4-zone RGB。
 
-#### Will iCue RGB keyboards be supported?
+#### 是否支持iCue RGB keyboards?
 
-No. Check out [OpenRGB](https://openrgb.org/) project.
+不支持。请查阅[OpenRGB](https://openrgb.org/)项目。
 
-#### Will Legion Spectrum RGB keyboards be supported?
+#### 是否支持Legion Spectrum RGB keyboards（联想的某个键盘）?
 
-Probably. I would like to add support to Spectrum RGB, but I currently don't have a device that supports it. PRs are welcome.
+作者想要适配但是并没有这个键盘（疯狂暗示）。欢迎提交PR。
 
-#### Can I have more RGB effects?
+#### 是否有更多的RGB效果？
 
-Only options natively supported by hardware are available; adding support for custom effects is not planned. If you would like more customization check out [L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) or [OpenRGB](https://openrgb.org/).
+只有硬件本身支持的选项是可用的，并且不计划添加自定义选项。如果你非常想要自定义RGB可以看看[L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) 或 [OpenRGB](https://openrgb.org/).
 
-#### Can you add fan control to other models?
+#### 能否让其他机型支持自定义风扇曲线？
 
-If you have a 2022 Legion that does not support it make a ticket and we'll try to add suport for it. Older models will not be supported due to technical limitations.
-
-
-## How to collect logs?
-
-In some cases it will be super useful if you can provide logs that this app can create. This helps with debugging and other issue solving.
+2022款可以，早些时候的机器不行。
 
 
+## 如何采集logs？
 
-To collect logs:
+如果遇到问题请提交los，这将会超超超超超级有用。
 
-1. Make sure that Lenovo Legion Toolkit is not running (also gone from tray area).
-2. Open `Run` (Win+R) and type there: `"%LOCALAPPDATA%\Programs\LenovoLegionToolkit\Lenovo Legion Toolkit.exe" --trace` and hit OK
-3. LLT will start and in the title bar you should see: `[LOGGING ENABLED]`
-4. Reproduce the issue you have (i.e. try to use the option that causes issues)
-5. Close LLT (also make sure it's gone from tray area)
-6. Again, in `Run` (Win+R) type `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`
-7. You should see at least one file. Theses are the logs you should attach to the issue.
+采集logs的步骤:
+
+1. 确保LLT不在运行（托盘区也不能存）；
+2. 使用`Win+R`打开"运行"，输入: `"%LOCALAPPDATA%\Programs\LenovoLegionToolkit\Lenovo Legion Toolkit.exe" --trace`并确认；
+3. LLT将启动，并在标题栏显示: `[LOGGING ENABLED]`
+4. 复现你遇到的问题；
+5. 关闭LLT（托盘区也不能留）；
+6. 再用`Win+R`并输入`"%LOCALAPPDATA%\LenovoLegionToolkit\log"`；
+7. 这里就是存放log文件的地方了，提Issue时记得附上。
 
 
 
-On version 2.6.0 or higher, you can also enable logs in a quicker way:
+2.6.0及以上版本采集logs更简单：
 
-1. Make sure that Lenovo Legion Toolkit is not running (also gone from tray area).
-2. Hold down Left Ctrl and Left Shift
-3. Double click Lenovo Legion Toolkit icon
-4. LLT will start and in the title bar you should see: `[LOGGING ENABLED]` you will also see an orange link to open the log file.
+1. 确保LLT不在运行（托盘区也不能存）；
+2. 按住`ctrl`和`shift`；
+3. 双击Lenovo Legion Toolkit图标；
+4. LLT将启动，并在标题栏显示: `[LOG]`，点一下就能看到当前的log文件了。
 
 
-## Contribution
+## 贡献
 
-I appreciate any feedback that you have, so please do not hesitate to report issues. PRs are also welcome!
+感谢你们的所有反馈，请不要犹豫提交Issue。我们也欢迎PR。
 
 #### Bugs
 
-If you find any bugs in the app, please report them. It will be very helpful if you attach logs that will help to trace the root cause of the issue. You can find logs in `%LOCALAPPDATA%\LenovoLegionToolkit\log`. Of course attach the latest log to the issue here on GitHub.
+如果你发现了任何bugs，请提交Issue告诉我。最好再附上logs，这对我修复bug有巨大帮助。logs的文件夹在`%LOCALAPPDATA%\LenovoLegionToolkit\log`。
 
-#### Compatibility
+#### 兼容性
 
-It would be great to expand the list of compatible devices, but to do it your help is needed!
+我非常乐意适配更多的机型，但要做到这点需要你的帮助！
 
-If you are willing to check if this app works correctly on your device that is currently unsupported, click _Continue_ on the popup you saw on startup. Lenovo Legion Toolkit will start logging automatically so you can submit them if anything goes wrong.
+如果你乐意在未适配机型上测试该软件，请在弹窗界面点击_继续_，LLT将会自动记录logs以便于遇到问题时提交。
 
-*Remember that some functions may not function properly, so keep this in mind.*
+*请记住某些功能可能无法正常运行*
 
-I would appreciate it, if you create an issue here on GitHub with the results of your testing.
+如果你在github issue提交了你的测试结果，我将非常感激。
 
-Make sure to include the following information in your issue:
+请确保你的issue中包含以下内容：
 
-1. Full model name (i.e. Legion 5 Pro 16ACH6H)
-2. List of features that are working as expected.
-3. List of features that seem to not work.
-4. List of features that crash the app.
+1. 机型全称 (例如 Legion 5 Pro 16ACH6H)
+2. 可以正常工作的功能。
+3. 似乎不起作用的功能。
+4. 导致崩溃的功能。
 
-The more info you add, the better the app will get over time. If anything seems off, write down precisely what was wrong and attach logs (`%LOCALAPPDATA%\LenovoLegionToolkit\log`). 
+你提交的信息越多，该项目会变得更加完善。如果有什么问题请写下详情并附上log (log文件夹`%LOCALAPPDATA%\LenovoLegionToolkit\log`)。
 
 
-
-Thanks in advance!
+十分感谢！！！
