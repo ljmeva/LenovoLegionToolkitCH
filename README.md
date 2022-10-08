@@ -188,7 +188,8 @@ LLT用计划任务实现开机自启，这样可以保证应用的管理员权�
 3. 似乎不起作用的功能。
 4. 导致崩溃的功能。
 
-你提交的信息越多，该项目会变得更加完善。如果有什么问题请写下详情并附上log (log文件夹`%LOCALAPPDATA%\LenovoLegionToolkit\log`)。
+你提交的信息越多，该项目会变得更加完善。如果有什么问题请写下详情并附上log
+(log文件夹`%LOCALAPPDATA%\LenovoLegionToolkit\log`)。
 
 
 十分感谢！！！
