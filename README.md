@@ -106,6 +106,10 @@ Lenovo Legion Toolkit能够自动在切换电源模式时切换Windows电源计�
 
 ## FAQ
 
+#### 如何禁用兼容性检查？
+
+在`%LOCALAPPDATA%\LenovoLegionToolkit`创建`args.txt`文件，并在文件中输入`--skip-compat-check`，该操作将禁用LLT的所有兼容性检查。请勿滥用此操作。
+
 #### LLT开机自启失败？
 
 LLT用计划任务实现开机自启，这样可以保证应用的管理员权限。开机后1分钟（2.4.0及以上版本为30s）自启来保证其他应用先启动。如果1分钟后还是没有启动，请提交Issue。
