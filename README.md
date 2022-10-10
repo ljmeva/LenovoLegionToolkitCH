@@ -41,7 +41,7 @@ Lenovo Legion Toolkit（LLT）是为联想拯救者笔记本电脑打造的轻�
 
 ## 下载
 
-你可以从这里下载安装包: [Latest release](https://github.com/BartoszCichecki/LenovoLegionToolkit/releases/latest).
+你可以从这里下载安装包: [Latest release](https://github.com/MZhao-ouo/LenovoLegionToolkitCH/releases).
 
 ## 兼容性
 
