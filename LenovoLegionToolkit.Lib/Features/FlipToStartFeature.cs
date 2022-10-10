@@ -1,6 +1,5 @@
 ﻿using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Extensions;
 
 namespace LenovoLegionToolkit.Lib.Features
 {
@@ -19,17 +18,18 @@ namespace LenovoLegionToolkit.Lib.Features
             public byte Reserved3;
         }
 
-        public FlipToStartFeature() : base("{D743491E-F484-4952-A87D-8D5DD189B70C}",
-            "FBSWIF",
-            PInvokeExtensions.VARIABLE_ATTRIBUTE_NON_VOLATILE |
-            PInvokeExtensions.VARIABLE_ATTRIBUTE_BOOTSERVICE_ACCESS |
-            PInvokeExtensions.VARIABLE_ATTRIBUTE_RUNTIME_ACCESS)
-        {
-        }
+        public FlipToStartFeature() : base("{D743491E-F484-4952-A87D-8D5DD189B70C}", "FBSWIF", 7) { }
 
         public override async Task<FlipToStartState> GetStateAsync()
         {
-            var result = await ReadFromUefiAsync<FlipToBootStruct>().ConfigureAwait(false);
+            var result = await ReadFromUefiAsync(new FlipToBootStruct
+            {
+                FlipToBootEn = 0,
+                Reserved1 = 0,
+                Reserved2 = 0,
+                Reserved3 = 0
+            }).ConfigureAwait(false);
+
             return result.FlipToBootEn == 0 ? FlipToStartState.Off : FlipToStartState.On;
         }
 

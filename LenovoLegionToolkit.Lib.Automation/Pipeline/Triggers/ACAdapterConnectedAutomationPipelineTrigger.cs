@@ -8,7 +8,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
     public class ACAdapterConnectedAutomationPipelineTrigger : IAutomationPipelineTrigger, IPowerStateAutomationPipelineTrigger, IDisallowDuplicatesAutomationPipelineTrigger
     {
         [JsonIgnore]
-        public string DisplayName => "When AC power adapter is connected";
+        public string DisplayName => "当插入原装适配器时";
 
         public async Task<bool> IsSatisfiedAsync(IAutomationEvent automationEvent)
         {

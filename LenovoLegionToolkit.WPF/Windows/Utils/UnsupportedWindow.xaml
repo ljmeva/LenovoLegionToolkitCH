@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LenovoLegionToolkit.WPF.Windows.Utils"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="Unsupported device"
@@ -52,7 +53,7 @@
                 <TextBlock
                     Margin="0,0,0,16"
                     FontWeight="Medium"
-                    Text="Lenovo Legion Toolkit has not been tested with your device."
+                    Text="Lenovo Legion Toolkit 未在此设备上测试过"
                     TextWrapping="Wrap" />
 
                 <Grid>
@@ -69,15 +70,15 @@
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Vendor: " />
+                        Text="厂商: " />
                     <TextBlock
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="Model: " />
+                        Text="机型: " />
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
-                        Text="Machine Type: " />
+                        Text="机器代码: " />
 
                     <TextBlock
                         x:Name="_vendorText"
@@ -94,16 +95,18 @@
                 </Grid>
 
                 <TextBlock Margin="0,16,0,24" TextWrapping="Wrap">
-                    <Run>You may choose to continue</Run>
-                    <Run FontWeight="Bold">at your own risk,</Run>
-                    <Run>but keep in mind that some features may not be available and/or not work properly.</Run>
+                    <Run>点击继续即视为</Run>
+                    <Run FontWeight="Bold">自愿承担所有风险！！！</Run>
+                    <LineBreak />
+                    <Run>部分功能可能运行不正常，欢迎到项目仓库提交你的机型并帮助作者进行测试。</Run>
                     <LineBreak />
                     <LineBreak />
-                    <Run>Logging will be enabled automatically, if you choose to continue.</Run>
+                    <Run>点击继续将自动记录Logs</Run>
                 </TextBlock>
 
-                <wpfui:Hyperlink Content="Check out project page on GitHub for more information." NavigateUri="https://github.com/BartoszCichecki/LenovoLegionToolkit#contribution" />
-                <wpfui:Hyperlink Click="Logs_Click" Content="Logs folder" />
+                <wpfui:Hyperlink Content="原版Github项目仓库" NavigateUri="https://github.com/BartoszCichecki/LenovoLegionToolkit#contribution" />
+                <wpfui:Hyperlink Content="中文版Github项目仓库" NavigateUri="https://github.com/MZhao-ouo/LenovoLegionToolkitCH#%E8%B4%A1%E7%8C%AE" />
+                <wpfui:Hyperlink Click="Logs_Click" Content="Logs日志文件夹" />
 
             </StackPanel>
 
@@ -124,14 +127,14 @@
                     Width="120"
                     Appearance="Primary"
                     Click="Exit_Click"
-                    Content="Exit" />
+                    Content="退出" />
                 <wpfui:Button
                     x:Name="_continueButton"
                     Grid.Column="2"
                     Width="120"
                     Appearance="Secondary"
                     Click="Continue_Click"
-                    Content="Continue"
+                    Content="继续"
                     IsEnabled="False" />
             </Grid>
         </Grid>

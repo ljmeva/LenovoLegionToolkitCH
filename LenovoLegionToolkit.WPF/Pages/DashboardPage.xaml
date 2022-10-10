@@ -32,7 +32,7 @@
                 Margin="0,16,0,24"
                 FontSize="24"
                 FontWeight="Medium"
-                Text="Power" />
+                Text="电源设置" />
             <controls:PowerModeControl />
             <controls:BatteryModeControl />
             <controls:AlwaysOnUSBControl />
@@ -47,7 +47,7 @@
                 Margin="0,16,0,24"
                 FontSize="24"
                 FontWeight="Medium"
-                Text="Graphics" />
+                Text="显示设置" />
             <controls:HybridModeControl />
             <controls:RefreshRateControl />
             <controls:DiscreteGPUControl />
@@ -64,7 +64,7 @@
                 Margin="0,16,0,24"
                 FontSize="24"
                 FontWeight="Medium"
-                Text="Other" />
+                Text="杂项" />
 
             <Grid>
                 <Grid.ColumnDefinitions>

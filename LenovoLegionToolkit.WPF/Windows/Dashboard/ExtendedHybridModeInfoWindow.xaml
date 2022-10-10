@@ -39,7 +39,7 @@
                 VerticalAlignment="Center"
                 FontSize="12"
                 IsHitTestVisible="False"
-                Text="About GPU Working Modes" />
+                Text="关于GPU工作模式" />
 
         </Grid>
 
@@ -49,62 +49,62 @@
                 <TextBlock
                     FontSize="16"
                     FontWeight="Medium"
-                    Text="Hybrid Mode" />
+                    Text="混合模式" />
                 <TextBlock
                     Margin="0,4,0,0"
                     Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                     TextWrapping="Wrap">
-                    Both integrated and discrete GPU are enabled. System will automatically switch between them based on it's needs.
+                    核显和独显都启用，系统自动分配。
                 </TextBlock>
 
                 <TextBlock
                     Margin="0,24,0,0"
                     FontSize="16"
                     FontWeight="Medium"
-                    Text="Hybrid-iGPU Only Mode" />
+                    Text="核显直连" />
                 <TextBlock
                     Margin="0,4,0,0"
                     Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                     TextWrapping="Wrap">
-                    Only use integrated GPU. This mode minimizes power consumption and noise.
+                    只使用核显。省电、降低风扇噪音。
                 </TextBlock>
                 <TextBlock
                     Margin="0,4,0,0"
                     FontWeight="Medium"
                     Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                     TextWrapping="Wrap">
-                    This mode only takes effect when discrete GPU is not working.
-                </TextBlock>
-
-                <TextBlock
-                    Margin="0,24,0,0"
-                    FontSize="16"
-                    FontWeight="Medium"
-                    Text="Hybrid-Auto Mode" />
-                <TextBlock
-                    Margin="0,4,0,0"
-                    Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                    TextWrapping="Wrap">
-                    Use only integrated GPU when on battery and both integrated and discrete GPU when AC adapter is connected. When a non-standard adapter is connected, system switches to Hybrid-iGPU Only Mode.
+                    当GPU不再工作时，该选项生效。
                 </TextBlock>
 
                 <TextBlock
                     Margin="0,24,0,0"
                     FontSize="16"
                     FontWeight="Medium"
-                    Text="dGPU Mode" />
+                    Text="自动模式" />
                 <TextBlock
                     Margin="0,4,0,0"
                     Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                     TextWrapping="Wrap">
-                    Use only discrete GPU. This mode provides best graphics performance, but increases power consumption.
+                    自动选择核显直连和混合模式，插电或需要时自动切换到混合模式。
+                </TextBlock>
+
+                <TextBlock
+                    Margin="0,24,0,0"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Text="独显直连" />
+                <TextBlock
+                    Margin="0,4,0,0"
+                    Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                    TextWrapping="Wrap">
+                    只使用独显，提高性能。
                 </TextBlock>
                 <TextBlock
                     Margin="0,4,0,0"
                     FontWeight="Medium"
                     Foreground="{DynamicResource TextFillColorTertiaryBrush}"
                     TextWrapping="Wrap">
-                    Switching to and from this mode requires restart.
+                    打开或关闭独显直连都需要重启。
                 </TextBlock>
 
             </StackPanel>
@@ -116,7 +116,7 @@
                 HorizontalAlignment="Center"
                 Appearance="Primary"
                 Click="CloseButton_Click"
-                Content="Close" />
+                Content="关闭" />
         </StackPanel>
 
     </Grid>

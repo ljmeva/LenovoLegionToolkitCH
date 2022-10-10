@@ -33,7 +33,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Utils
                 },
                 new AutomationPipeline
                 {
-                    Name = "Deactivate GPU",
+                    Name = "禁用GPU",
                     Steps = { new DeactivateGPUAutomationStep(DeactivateGPUAutomationStepState.KillApps) },
                 },
             },

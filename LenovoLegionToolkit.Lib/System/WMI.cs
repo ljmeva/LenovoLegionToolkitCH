@@ -51,7 +51,7 @@ namespace LenovoLegionToolkit.Lib.System
                 foreach (var pair in methodParams)
                     methodParamsObject[pair.Key] = pair.Value;
 
-                mo.InvokeMethod(methodName, methodParamsObject, new InvokeMethodOptions());
+                mo.InvokeMethod(methodName, methodParamsObject, null);
             }
             catch (ManagementException ex)
             {
@@ -59,7 +59,7 @@ namespace LenovoLegionToolkit.Lib.System
             }
         }
 
-        public static async Task<T> CallAsync<T>(string scope, FormattableString query, string methodName, Dictionary<string, object> methodParams, Func<PropertyDataCollection, T> converter)
+        public static async Task<T> CallAsync<T>(string scope, FormattableString query, string methodName, Dictionary<string, object> methodParams, Func<PropertyDataCollection, T> converter) where T : struct
         {
             try
             {
@@ -77,7 +77,11 @@ namespace LenovoLegionToolkit.Lib.System
                 foreach (var pair in methodParams)
                     methodParamsObject[pair.Key] = pair.Value;
 
-                var resultProperties = mo.InvokeMethod(methodName, methodParamsObject, new InvokeMethodOptions());
+                var resultProperties = mo.InvokeMethod(methodName, methodParamsObject, null);
+
+                if (resultProperties is null)
+                    return default;
+
                 var result = converter(resultProperties.Properties);
                 return result;
             }

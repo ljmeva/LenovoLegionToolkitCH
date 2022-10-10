@@ -53,21 +53,21 @@ namespace LenovoLegionToolkit.WPF.Controls
 
         private readonly Label _redLabel = new()
         {
-            Content = "Red:",
+            Content = "R:",
             VerticalContentAlignment = VerticalAlignment.Center,
             Margin = new(0, 8, 0, 0),
         };
 
         private readonly Label _greenLabel = new()
         {
-            Content = "Green:",
+            Content = "G:",
             VerticalContentAlignment = VerticalAlignment.Center,
             Margin = new(0, 8, 0, 0),
         };
 
         private readonly Label _blueLabel = new()
         {
-            Content = "Blue:",
+            Content = "B:",
             VerticalContentAlignment = VerticalAlignment.Center,
             Margin = new(0, 8, 0, 0),
         };

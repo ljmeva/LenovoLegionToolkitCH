@@ -4,13 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="clr-namespace:LenovoLegionToolkit.WPF.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dashboard="clr-namespace:LenovoLegionToolkit.WPF.Controls.Dashboard"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     d:DesignWidth="800"
     mc:Ignorable="d">
     <wpfui:CardControl Margin="0,0,0,8" Icon="DeveloperBoard24">
         <wpfui:CardControl.Header>
-            <controls:CardHeaderControl Title="Discrete GPU" Subtitle="Disable discrete GPU if it is active unnecessarily." />
+            <controls:CardHeaderControl Title="独立显卡" Subtitle="在不使用时禁用显卡。" />
         </wpfui:CardControl.Header>
         <StackPanel
             x:Name="_content"
@@ -78,7 +79,7 @@
                             Grid.Column="1"
                             Margin="8,0,8,2"
                             FontWeight="Medium"
-                            Text="Deactivate" />
+                            Text="禁用" />
                         <wpfui:SymbolIcon
                             x:Name="_deactivateGPUButtonIcon"
                             Grid.Column="0"
@@ -89,8 +90,8 @@
                 <wpfui:Button.ContextMenu>
                     <ContextMenu Width="150">
                         <ContextMenu.Items>
-                            <wpfui:MenuItem Click="KillAppsMenuItem_Click" Header="Kill apps" />
-                            <wpfui:MenuItem Click="RestartGPUMenuItem_Click" Header="Restart GPU" />
+                            <wpfui:MenuItem Click="KillAppsMenuItem_Click" Header="杀死独显上的app" />
+                            <wpfui:MenuItem Click="RestartGPUMenuItem_Click" Header="重启GPU" />
                         </ContextMenu.Items>
                     </ContextMenu>
                 </wpfui:Button.ContextMenu>

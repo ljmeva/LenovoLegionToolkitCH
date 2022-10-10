@@ -61,8 +61,7 @@ namespace LenovoLegionToolkit.WPF.Windows
         {
             _notifyIcon?.Unregister();
 
-            ContextMenuHelper.Instance.BringToForeground = BringToForeground;
-            ContextMenuHelper.Instance.Close = ((App)Application.Current).ShutdownAsync;
+            ContextMenuHelper.Instance.BringToForegroundAction = BringToForeground;
 
             var notifyIcon = new NotifyIcon
             {
@@ -125,7 +124,7 @@ namespace LenovoLegionToolkit.WPF.Windows
             InitializeTray();
         }
 
-        private async void MainWindow_Closing(object? sender, CancelEventArgs e)
+        private void MainWindow_Closing(object? sender, CancelEventArgs e)
         {
             if (_settings.Store.MinimizeOnClose)
             {
@@ -142,7 +141,7 @@ namespace LenovoLegionToolkit.WPF.Windows
 
                 _notifyIcon?.Unregister();
 
-                await ((App)Application.Current).ShutdownAsync();
+                Application.Current.Shutdown();
             }
         }
 
@@ -220,7 +219,7 @@ namespace LenovoLegionToolkit.WPF.Windows
 
         private void LoadDeviceInfo()
         {
-            Task.Run(Compatibility.GetMachineInformationAsync)
+            Task.Run(Compatibility.GetMachineInformation)
                 .ContinueWith(mi =>
                 {
                     _deviceInfoIndicator.Content = mi.Result.Model;

@@ -24,7 +24,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
 
         private async void HybridModeControl_Initialized(object? sender, EventArgs e)
         {
-            var mi = await Compatibility.GetMachineInformationAsync();
+            var mi = await Compatibility.GetMachineInformation();
             if (mi.Properties.SupportsExtendedHybridMode)
                 Content = new ComboBoxHybridModeControl();
             else
@@ -44,8 +44,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
         public ComboBoxHybridModeControl()
         {
             Icon = SymbolRegular.LeafOne24;
-            Title = "GPU Working Mode";
-            Subtitle = "Select GPU operating mode based on your computer's usage and power conditions.\nSwitching modes may require restart.";
+            Title = "GPU工作模式";
+            Subtitle = "根据使用情况选择GPU工作模式。\n开关独显直连需要重启。";
         }
 
         protected override FrameworkElement? GetAccessory(ComboBox comboBox)
@@ -76,10 +76,10 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
 
             var result = await MessageBoxHelper.ShowAsync(
                 this,
-                "Restart required",
-                $"Changing to {newValue.GetDisplayName()} requires restart. Do you want to restart now?",
-                "Restart now",
-                "I will restart later");
+                "需要重启",
+                $"应用 {newValue.GetDisplayName()} 需要重启。是否立即重启？",
+                "重启",
+                "稍后");
 
             if (result)
                 await Power.RestartAsync();
@@ -106,8 +106,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
         public ToggleHybridModeControl()
         {
             Icon = SymbolRegular.LeafOne24;
-            Title = "Hybrid Mode";
-            Subtitle = "Allow switching between integrated and discrete GPU.\nRequires restart.";
+            Title = "混合模式";
+            Subtitle = "独显核显混合使用。\n需要重启。";
         }
 
         protected override async Task OnStateChange(ToggleSwitch toggle, IFeature<HybridModeState> feature)
@@ -116,10 +116,10 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
 
             var result = await MessageBoxHelper.ShowAsync(
                 this,
-                "Restart required",
-                "Changing Hybrid Mode requires restart. Do you want to restart now?",
-                "Restart now",
-                "I will restart later");
+                "需要重启",
+                "更改到混合模式需要重启。是否立即重启？",
+                "重启",
+                "稍后");
 
             if (result)
                 await Power.RestartAsync();

@@ -32,11 +32,10 @@
                     <TextBlock
                         FontSize="24"
                         FontWeight="Medium"
-                        Text="Actions" />
+                        Text="自动化" />
 
                     <TextBlock Margin="0,8,0,0">
-                        If enabled these action will run automatically. Whenever state changes, all actions<LineBreak />
-                        will be evaluated from top to bottom. Only actions that match current state will run.</TextBlock>
+                        启用后下列自动化将自动执行。当检测到条件符合，所有令指将从上往下执行。</TextBlock>
                 </StackPanel>
 
                 <controls:LoadableControl
@@ -47,7 +46,7 @@
 
                         <wpfui:CardControl Margin="0,0,0,24">
                             <wpfui:CardControl.Header>
-                                <controls:CardHeaderControl Title="Enable" Subtitle="Lenovo Legion Toolkit must be running for automatic actions to work." />
+                                <controls:CardHeaderControl Title="启用自动化" Subtitle="Lenovo Legion Toolkit必须挂在后台，自动化才能正常运行。" />
                             </wpfui:CardControl.Header>
                             <wpfui:ToggleSwitch
                                 x:Name="_enableAutomaticPipelinesToggle"
@@ -61,7 +60,7 @@
                             HorizontalAlignment="Center"
                             FontWeight="Medium"
                             Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="No Actions defined. Click &quot;Add new&quot; to create new Action." />
+                            Text="暂无自动化选项。点击&quot;添加&quot;创建自动化。" />
 
                         <StackPanel x:Name="_automaticPipelinesStackPanel" />
 
@@ -71,7 +70,7 @@
                                 Width="120"
                                 Appearance="Primary"
                                 Click="NewAutomaticPipelineButton_Click"
-                                Content="Add new">
+                                Content="添加">
                                 <wpfui:Button.ContextMenu>
                                     <ContextMenu />
                                 </wpfui:Button.ContextMenu>
@@ -86,10 +85,10 @@
                     <TextBlock
                         FontSize="24"
                         FontWeight="Medium"
-                        Text="Quick Actions" />
+                        Text="快捷指令" />
 
                     <TextBlock Margin="0,8,0,0">
-                        Quick actions are available in the right click menu of the tray icon.
+                        快捷指令可以通过右键托盘图标快速触发。
                     </TextBlock>
 
                 </StackPanel>
@@ -106,7 +105,7 @@
                             HorizontalAlignment="Center"
                             FontWeight="Medium"
                             Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                            Text="No Quick Actions defined. Click &quot;Add new&quot; to create new Quick Action." />
+                            Text="暂无快捷指令。点击&quot;添加&quot;创建快捷指令。" />
 
                         <StackPanel x:Name="_manualPipelinesStackPanel" />
 
@@ -116,7 +115,7 @@
                                 Width="120"
                                 Appearance="Primary"
                                 Click="NewManualPipelineButton_Click"
-                                Content="Add new" />
+                                Content="添加" />
                         </StackPanel>
 
                     </StackPanel>
@@ -138,12 +137,12 @@
                 Width="120"
                 Appearance="Primary"
                 Click="SaveButton_Click"
-                Content="Save" />
+                Content="保存" />
             <wpfui:Button
                 Width="120"
                 Margin="12,0,0,0"
                 Click="RevertButton_Click"
-                Content="Revert" />
+                Content="撤销" />
 
         </StackPanel>
 

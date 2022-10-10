@@ -8,7 +8,7 @@ namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight
         public RGBKeyboardBrightnessCardControl()
         {
             Icon = SymbolRegular.Keyboard24;
-            Title = "Brightness";
+            Title = "亮度";
         }
     }
 }

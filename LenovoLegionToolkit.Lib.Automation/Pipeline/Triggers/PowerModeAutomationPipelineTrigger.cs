@@ -6,7 +6,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
 {
     public class PowerModeAutomationPipelineTrigger : IAutomationPipelineTrigger, IPowerModeAutomationPipelineTrigger
     {
-        public string DisplayName => "When power mode is changed";
+        public string DisplayName => "当性能模式改变时";
 
         public PowerModeState PowerModeState { get; }
 

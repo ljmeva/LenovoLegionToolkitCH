@@ -52,29 +52,29 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
         private readonly CheckBox _isExclusiveCheckBox = new()
         {
             HorizontalAlignment = HorizontalAlignment.Left,
-            Content = "Exclusive",
-            ToolTip = "Do not execute further actions when this action runs.",
+            Content = "独占",
+            ToolTip = "勾选后，该操作将打断其他快捷指令或自动化。",
             Width = 100,
             Margin = new(0, 0, 8, 0),
         };
 
         private readonly Button _runNowButton = new()
         {
-            Content = "Run now",
+            Content = "立即运行",
             Width = 100,
             Margin = new(0, 0, 8, 0),
         };
 
         private readonly Button _addStepButton = new()
         {
-            Content = "Add step",
+            Content = "添加操作",
             Width = 100,
             Margin = new(0, 0, 8, 0),
         };
 
         private readonly Button _deletePipelineButton = new()
         {
-            Content = "Delete",
+            Content = "删除",
             Width = 100,
         };
 
@@ -172,22 +172,22 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             try
             {
                 _runNowButton.IsEnabled = false;
-                _runNowButton.Content = "Running...";
+                _runNowButton.Content = "运行中...";
                 var pipeline = CreateAutomationPipeline();
                 await _automationProcessor.RunNowAsync(pipeline);
 
-                await SnackbarHelper.ShowAsync("Run now", "Completed successfully!");
+                await SnackbarHelper.ShowAsync("立即运行", "运行成功！");
             }
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Run now completed with errors", ex);
+                    Log.Instance.Trace($"运行错误", ex);
 
-                await SnackbarHelper.ShowAsync("Run now", "Completed with errors.");
+                await SnackbarHelper.ShowAsync("立即运行", "运行错误");
             }
             finally
             {
-                _runNowButton.Content = "Run now";
+                _runNowButton.Content = "立即运行";
                 _runNowButton.IsEnabled = true;
             }
         }
@@ -248,7 +248,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             {
                 var button = new Button
                 {
-                    Content = "Configure",
+                    Content = "编辑",
                     Margin = new(16, 0, 16, 0),
                     Width = 120,
                 };
@@ -277,7 +277,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             {
                 var button = new Button
                 {
-                    Content = "Configure",
+                    Content = "编辑",
                     Margin = new(16, 0, 16, 0),
                     Width = 120,
                 };
@@ -307,7 +307,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
 
                 var button = new Button
                 {
-                    Content = "Configure",
+                    Content = "编辑",
                     Margin = new(16, 0, 16, 0),
                     Width = 120,
                 };
@@ -402,7 +402,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 TouchpadLockAutomationStep s => new TouchpadLockAutomationStepControl(s),
                 WhiteKeyboardBacklightAutomationStep s => new WhiteKeyboardBacklightAutomationStepControl(s),
                 WinKeyAutomationStep s => new WinKeyAutomationStepControl(s),
-                _ => throw new InvalidOperationException("Unknown step type."),
+                _ => throw new InvalidOperationException("未知操作类型。"),
             };
             control.MouseRightButtonUp += (s, e) =>
             {
@@ -431,7 +431,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             var moveUpMenuItem = new MenuItem
             {
                 SymbolIcon = SymbolRegular.ArrowUp24,
-                Header = "Move up"
+                Header = "上移"
             };
             if (index > 0)
                 moveUpMenuItem.Click += (s, e) => MoveStep(control, index - 1);
@@ -442,7 +442,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             var moveDownMenuItem = new MenuItem
             {
                 SymbolIcon = SymbolRegular.ArrowDown24,
-                Header = "Move down"
+                Header = "下移"
             };
             if (index < maxIndex)
                 moveDownMenuItem.Click += (s, e) => MoveStep(control, index + 1);

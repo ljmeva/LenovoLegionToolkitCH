@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.ServiceProcess;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Utils;
 using TaskService = Microsoft.Win32.TaskScheduler.TaskService;
 
@@ -134,10 +133,12 @@ namespace LenovoLegionToolkit.Lib.System
 
                 try
                 {
-                    if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Changing service {serviceName} start mode to {enabled}");
+                    var startMode = enabled ? ServiceStartMode.Automatic : ServiceStartMode.Disabled;
 
-                    service.ChangeStartMode(enabled);
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"Changing service {serviceName} start mode to {startMode}");
+
+                    service.ChangeStartMode(startMode);
 
                     if (enabled)
                     {

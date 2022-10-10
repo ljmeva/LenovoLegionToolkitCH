@@ -9,8 +9,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
         public RGBKeyboardBacklightAutomationStepControl(IAutomationStep<RGBKeyboardBacklightPreset> step) : base(step)
         {
             Icon = SymbolRegular.Keyboard24;
-            Title = "Keyboard backlight";
-            Subtitle = "Adjust keyboard backlight preset.";
+            Title = "键盘RGB";
+            Subtitle = "更改键盘RGB亮度";
         }
     }
 }

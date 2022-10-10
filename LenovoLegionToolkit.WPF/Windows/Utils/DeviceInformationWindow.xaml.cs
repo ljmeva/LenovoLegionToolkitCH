@@ -29,7 +29,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Utils
 
         private async Task RefreshAsync(bool forceRefresh = false)
         {
-            var mi = await Compatibility.GetMachineInformationAsync();
+            var mi = await Compatibility.GetMachineInformation();
 
             _manufacturerLabel.Content = mi.Vendor;
             _modelLabel.Content = mi.Model;
@@ -63,7 +63,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Utils
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't load warranty info.", ex);
+                    Log.Instance.Trace($"无法加载保修信息。", ex);
             }
             finally
             {
@@ -81,12 +81,12 @@ namespace LenovoLegionToolkit.WPF.Windows.Utils
             try
             {
                 Clipboard.SetText(str);
-                await _snackBar.ShowAsync("Copied!", $"\"{str}\" copied to clipboard.");
+                await _snackBar.ShowAsync("已复制！", $"\"{str}\" 已复制到剪贴板。");
             }
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't copy to clipboard", ex);
+                    Log.Instance.Trace($"无法复制到剪贴板", ex);
             }
         }
 

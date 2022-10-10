@@ -8,7 +8,7 @@ namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight
         public RGBKeyboardEffectCardControl()
         {
             Icon = SymbolRegular.Keyboard24;
-            Title = "Effect";
+            Title = "灯效";
         }
     }
 }

@@ -13,7 +13,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
 
         public Time? Time { get; }
 
-        public string DisplayName => "At specified time";
+        public string DisplayName => "定时器";
 
         private readonly SunriseSunset _sunriseSunset = IoCContainer.Resolve<SunriseSunset>();
 

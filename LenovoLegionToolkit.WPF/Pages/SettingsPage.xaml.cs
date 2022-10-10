@@ -327,5 +327,10 @@ namespace LenovoLegionToolkit.WPF.Pages
             };
             window.ShowDialog();
         }
+
+        private void _accentColor_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

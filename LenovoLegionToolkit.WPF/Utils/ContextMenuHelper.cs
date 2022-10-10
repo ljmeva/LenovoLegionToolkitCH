@@ -28,8 +28,7 @@ namespace LenovoLegionToolkit.WPF.Utils
 
         public ContextMenu ContextMenu { get; }
 
-        public Action? BringToForeground { get; set; }
-        public Func<Task>? Close { get; set; }
+        public Action? BringToForegroundAction { get; set; }
 
         private static ContextMenuHelper? _instance;
 
@@ -39,15 +38,11 @@ namespace LenovoLegionToolkit.WPF.Utils
         {
             ContextMenu = new ContextMenu();
 
-            var openMenuItem = new MenuItem { Header = "Open", Tag = StaticTag };
-            openMenuItem.Click += (s, e) => BringToForeground?.Invoke();
+            var openMenuItem = new MenuItem { Header = "打开", Tag = StaticTag };
+            openMenuItem.Click += (s, e) => BringToForegroundAction?.Invoke();
 
-            var closeMenuItem = new MenuItem { Header = "Close", Tag = StaticTag };
-            closeMenuItem.Click += async (s, e) =>
-            {
-                if (Close is not null)
-                    await Close.Invoke();
-            };
+            var closeMenuItem = new MenuItem { Header = "关闭", Tag = StaticTag };
+            closeMenuItem.Click += (s, e) => Application.Current.Shutdown();
 
             ContextMenu.Items.Add(openMenuItem);
             ContextMenu.Items.Add(closeMenuItem);
@@ -77,7 +72,7 @@ namespace LenovoLegionToolkit.WPF.Utils
 
                 var items = new List<Control>
                 {
-                    new MenuItem { Header = "Quick Actions", Tag = QuickActionsTag, IsEnabled = false }
+                    new MenuItem { Header = "快捷指令", Tag = QuickActionsTag, IsEnabled = false }
                 };
 
                 foreach (var menuPipeline in pipelines.Where(p => p.Trigger is null))
@@ -128,7 +123,7 @@ namespace LenovoLegionToolkit.WPF.Utils
                 menuItem.Click += async (s, e) =>
                 {
                     ContextMenu.IsOpen = false;
-                    BringToForeground?.Invoke();
+                    BringToForegroundAction?.Invoke();
                     await Task.Delay(500); // Give window time to come back
                     navigationStore.Navigate(item.PageTag);
                 };

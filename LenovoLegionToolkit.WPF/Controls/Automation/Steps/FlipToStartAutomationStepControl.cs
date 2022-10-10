@@ -9,8 +9,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
         public FlipToStartAutomationStepControl(IAutomationStep<FlipToStartState> step) : base(step)
         {
             Icon = SymbolRegular.Power24;
-            Title = "Flip To Start";
-            Subtitle = "Turn on the laptop when you open the lid.";
+            Title = "开盖自启";
+            Subtitle = "打开笔记本盖子时自动启动电脑。";
         }
     }
 }

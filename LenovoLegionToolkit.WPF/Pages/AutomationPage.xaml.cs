@@ -80,7 +80,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 await _automationProcessor.ReloadPipelinesAsync(pipelines);
                 await RefreshAsync();
 
-                await SnackbarHelper.ShowAsync("Saved", "Changes were saved successfully!");
+                await SnackbarHelper.ShowAsync("已保存", "保存成功！");
             }
             finally
             {
@@ -93,7 +93,7 @@ namespace LenovoLegionToolkit.WPF.Pages
         {
             await RefreshAsync();
 
-            await SnackbarHelper.ShowAsync("Reverted", "All changes reverted!");
+            await SnackbarHelper.ShowAsync("已撤销", "所有更改已撤销！");
         }
 
         private async Task RefreshAsync()
@@ -170,25 +170,25 @@ namespace LenovoLegionToolkit.WPF.Pages
             var index = stackPanel.Children.IndexOf(control);
             var maxIndex = stackPanel.Children.Count - 1;
 
-            var moveUpMenuItem = new MenuItem { SymbolIcon = SymbolRegular.ArrowUp24, Header = "Move up" };
+            var moveUpMenuItem = new MenuItem { SymbolIcon = SymbolRegular.ArrowUp24, Header = "上移" };
             if (index > 0)
                 moveUpMenuItem.Click += (s, e) => MovePipeline(control, stackPanel, index - 1);
             else
                 moveUpMenuItem.IsEnabled = false;
             menuItems.Add(moveUpMenuItem);
 
-            var moveDownMenuItem = new MenuItem { SymbolIcon = SymbolRegular.ArrowDown24, Header = "Move down" };
+            var moveDownMenuItem = new MenuItem { SymbolIcon = SymbolRegular.ArrowDown24, Header = "下移" };
             if (index < maxIndex)
                 moveDownMenuItem.Click += (s, e) => MovePipeline(control, stackPanel, index + 1);
             else
                 moveDownMenuItem.IsEnabled = false;
             menuItems.Add(moveDownMenuItem);
 
-            var renameMenuItem = new MenuItem { SymbolIcon = SymbolRegular.Edit24, Header = "Rename" };
+            var renameMenuItem = new MenuItem { SymbolIcon = SymbolRegular.Edit24, Header = "重命名" };
             renameMenuItem.Click += async (s, e) => await RenamePipelineAsync(control);
             menuItems.Add(renameMenuItem);
 
-            var deleteMenuItem = new MenuItem { SymbolIcon = SymbolRegular.Delete24, Header = "Delete" };
+            var deleteMenuItem = new MenuItem { SymbolIcon = SymbolRegular.Delete24, Header = "删除" };
             deleteMenuItem.Click += async (s, e) => await DeletePipelineAsync(control, stackPanel);
             menuItems.Add(deleteMenuItem);
 
@@ -217,7 +217,7 @@ namespace LenovoLegionToolkit.WPF.Pages
 
         private async Task AddManualPipelineAsync()
         {
-            var newName = await MessageBoxHelper.ShowInputAsync(this, "Add new", "Name...");
+            var newName = await MessageBoxHelper.ShowInputAsync(this, "新建", "名称...");
             if (string.IsNullOrWhiteSpace(newName))
                 return;
 
@@ -232,7 +232,7 @@ namespace LenovoLegionToolkit.WPF.Pages
         private async Task RenamePipelineAsync(AutomationPipelineControl control)
         {
             var name = control.GetName();
-            var newName = await MessageBoxHelper.ShowInputAsync(this, "Rename", "Name...", name, allowEmpty: true);
+            var newName = await MessageBoxHelper.ShowInputAsync(this, "重命名", "名称...", name, allowEmpty: true);
             control.SetName(newName);
         }
 
@@ -251,7 +251,7 @@ namespace LenovoLegionToolkit.WPF.Pages
                 new ACAdapterConnectedAutomationPipelineTrigger()
             };
 
-            if ((await Compatibility.GetMachineInformationAsync()).Properties.SupportsACDetection)
+            if ((await Compatibility.GetMachineInformation()).Properties.SupportsACDetection)
                 triggers.Add(new LowWattageACAdapterConnectedAutomationPipelineTrigger());
 
             triggers.AddRange(new IAutomationPipelineTrigger[]

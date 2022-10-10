@@ -31,7 +31,7 @@
                 Margin="0,24,0,24"
                 FontSize="24"
                 FontWeight="Medium"
-                Text="Downloads" />
+                Text="驱动下载" />
 
             <wpfui:CardControl
                 Grid.Row="1"
@@ -55,7 +55,7 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             VerticalContentAlignment="Center"
-                            Content="Machine Type:">
+                            Content="机型">
                             <Label.Foreground>
                                 <SolidColorBrush Color="{DynamicResource TextFillColorPrimary}" />
                             </Label.Foreground>
@@ -65,7 +65,7 @@
                             Grid.Column="0"
                             Margin="0,8,0,0"
                             VerticalContentAlignment="Center"
-                            Content="Operating System:">
+                            Content="操作系统:">
                             <Label.Foreground>
                                 <SolidColorBrush Color="{DynamicResource TextFillColorPrimary}" />
                             </Label.Foreground>
@@ -75,7 +75,7 @@
                             Grid.Column="0"
                             Margin="0,8,0,0"
                             VerticalContentAlignment="Center"
-                            Content="Download to:">
+                            Content="下载到:">
                             <Label.Foreground>
                                 <SolidColorBrush Color="{DynamicResource TextFillColorPrimary}" />
                             </Label.Foreground>
@@ -86,7 +86,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             Margin="8,0,0,0"
-                            PlaceholderText="(eg. 82JQ)" />
+                            PlaceholderText="(例如：82JQ)" />
                         <ComboBox
                             x:Name="_osComboBox"
                             Grid.Row="1"
@@ -126,16 +126,16 @@
                             Grid.Column="4"
                             HorizontalAlignment="Right">
 
-                            <TextBlock Margin="0,0,0,4" Text="Source:" />
+                            <TextBlock Margin="0,0,0,4" Text="来源:" />
                             <RadioButton
                                 x:Name="_sourcePrimaryRadio"
-                                Content="Primary (Recommended)"
+                                Content="官方 (推荐)"
                                 GroupName="source"
                                 IsChecked="True"
                                 ToolTip="Same as Lenovo PC Support" />
                             <RadioButton
                                 x:Name="_sourceSecondaryRadio"
-                                Content="Secondary"
+                                Content="第三方"
                                 GroupName="source"
                                 ToolTip="Same as Lenovo DriverGrabber" />
 
@@ -149,7 +149,7 @@
                             VerticalAlignment="Bottom"
                             Appearance="Primary"
                             Click="DownloadPackagesButton_Click"
-                            Content="Refresh"
+                            Content="搜索"
                             IsEnabled="false" />
 
                         <wpfui:Button
@@ -160,7 +160,7 @@
                             VerticalAlignment="Bottom"
                             Appearance="Secondary"
                             Click="CancelDownloadPackagesButton_Click"
-                            Content="Cancel"
+                            Content="取消"
                             IsEnabled="false"
                             Visibility="Collapsed" />
                     </Grid>
@@ -182,11 +182,11 @@
                                     <TextBlock
                                         Margin="0,0,0,4"
                                         FontWeight="Medium"
-                                        Text="Important" />
+                                        Text="注意！！！" />
                                     <TextBlock
                                         FontSize="12"
                                         Foreground="{DynamicResource TextFillColorTertiaryBrush}"
-                                        Text="Below is a list of software packages that are marked as compatible with your laptop.&#x0a;Always make sure that you are installing correct packages." />
+                                        Text="下列是标记为适用于你设备的驱动。&#x0a;请确保安装了正确的驱动。" />
                                 </StackPanel>
                             </wpfui:CardControl.Header>
                         </wpfui:CardControl>

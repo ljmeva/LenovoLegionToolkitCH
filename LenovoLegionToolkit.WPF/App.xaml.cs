@@ -1,7 +1,4 @@
-﻿#if !DEBUG
-using LenovoLegionToolkit.Lib.System;
-#endif
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,7 +15,11 @@ using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
+#if !DEBUG
+using LenovoLegionToolkit.Lib.System;
+#endif
 using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.WPF;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows;
 using LenovoLegionToolkit.WPF.Windows.Utils;
@@ -27,7 +28,7 @@ using WinFormsHighDpiMode = System.Windows.Forms.HighDpiMode;
 
 #pragma warning disable IDE0052 // Remove unread private members
 
-namespace LenovoLegionToolkit.WPF
+namespace LenovoLegionToolkit
 {
     public partial class App
     {
@@ -39,7 +40,7 @@ namespace LenovoLegionToolkit.WPF
 
         private async void Application_Startup(object sender, StartupEventArgs e)
         {
-            var args = e.Args.Concat(LoadExternalArgs()).ToArray();
+            var args = e.Args.Concat(LoadExternalArgs());
 
             if (IsTraceEnabled(args))
                 Log.Instance.IsTraceEnabled = true;
@@ -77,19 +78,6 @@ namespace LenovoLegionToolkit.WPF
             {
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Couldn't initialize automation processor.", ex);
-            }
-
-            try
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Ensuring AI Mode is set...");
-
-                await IoCContainer.Resolve<PowerModeFeature>().EnsureAIModeIsSetAsync();
-            }
-            catch (Exception ex)
-            {
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't set AI Mode.", ex);
             }
 
             try
@@ -159,26 +147,20 @@ namespace LenovoLegionToolkit.WPF
                 Log.Instance.Trace($"Start up complete");
         }
 
-        public async Task ShutdownAsync()
+        private async void Application_Exit(object sender, ExitEventArgs e)
         {
             try
             {
-                if (IoCContainer.TryResolve<RGBKeyboardBacklightController>() is { } rgbKeyboardBacklightController)
-                {
-                    if (rgbKeyboardBacklightController.IsSupported())
-                        await rgbKeyboardBacklightController.SetLightControlOwnerAsync(false);
-                }
-            }
-            catch { }
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Resigning light control owner...");
 
-            try
+                await IoCContainer.Resolve<RGBKeyboardBacklightController>().SetLightControlOwnerAsync(false);
+            }
+            catch (Exception ex)
             {
-                if (IoCContainer.TryResolve<AIModeController>() is { } aiModeController)
-                    await aiModeController.StopAsync();
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Couldn't set light control owner.", ex);
             }
-            catch { }
-
-            Shutdown();
         }
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

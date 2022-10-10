@@ -10,7 +10,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
         {
             Icon = SymbolRegular.TopSpeed24;
             Title = "Over Drive";
-            Subtitle = "Improve response time of the built-in display.";
+            Subtitle = "提高屏幕反应速度。";
         }
     }
 }

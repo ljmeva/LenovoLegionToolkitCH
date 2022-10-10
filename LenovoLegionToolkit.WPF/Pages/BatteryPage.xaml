@@ -17,7 +17,7 @@
             Margin="0,16,0,24"
             FontSize="24"
             FontWeight="Medium"
-            Text="Battery" />
+            Text="电池" />
 
         <StackPanel Margin="0,0,0,24" Orientation="Horizontal">
             <wpfui:SymbolIcon
@@ -42,7 +42,7 @@
                     x:Name="_lowWattageCharger"
                     FontSize="14"
                     Foreground="{DynamicResource SystemFillColorCautionBrush}"
-                    Text="Low wattage charger connected"
+                    Text="已连接低功率充电器。"
                     Visibility="Hidden" />
             </StackPanel>
         </StackPanel>
@@ -52,21 +52,21 @@
             Margin="0,0,0,24"
             Click="BatteryTemperatureCardControl_Click">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Battery temperature" Subtitle="Current temperature of the battery." />
+                <controls:CardHeaderControl Title="电池温度" Subtitle="当前电池的温度。" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryTemperatureText" FontSize="14" />
         </wpfui:CardControl>
 
         <wpfui:CardControl Margin="0,0,0,8">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Discharge rate" Subtitle="Rate at which battery is charged (+), or discharged (-)." />
+                <controls:CardHeaderControl Title="电池充放电功率" Subtitle="充电为正(+)，放电为负(-)。" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryDischargeRateText" FontSize="14" />
         </wpfui:CardControl>
 
         <wpfui:CardControl Margin="0,0,0,8">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Current capacity" Subtitle="Current battery capacity." />
+                <controls:CardHeaderControl Title="当前电池容量" Subtitle="当前的电池容量" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryCapacityText" FontSize="14" />
         </wpfui:CardControl>
@@ -74,41 +74,41 @@
         <wpfui:CardControl Margin="0,0,0,8">
             <TextBlock x:Name="_batteryFullChargeCapacityText" FontSize="14" />
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Full charge capacity" Subtitle="Battery capacity when fully charged." />
+                <controls:CardHeaderControl Title="电池充满容量" Subtitle="电池充满电后的容量。" />
             </wpfui:CardControl.Header>
         </wpfui:CardControl>
 
         <wpfui:CardControl Margin="0,0,0,24">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Design capacity" Subtitle="Battery capacity as designed." />
+                <controls:CardHeaderControl Title="电池设计容量" Subtitle="出厂时标称的电池容量" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryDesignCapacityText" FontSize="14" />
         </wpfui:CardControl>
 
         <wpfui:CardControl Margin="0,0,0,8">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="On battery since" Subtitle="Time since laptop was last connected to AC power.&#x0a;This time might not be accurate if laptop was charged when sleeping or off." />
+                <controls:CardHeaderControl Title="电池使用时间" Subtitle="统计上次离电后电池使用的时间。&#x0a;如果笔记本休眠或者关机时充电，该数值可能不准确。" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_onBatterySinceText" FontSize="14" />
         </wpfui:CardControl>
 
         <wpfui:CardControl Margin="0,0,0,8">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Cycle count" Subtitle="Number of charge/discharge cycles." />
+                <controls:CardHeaderControl Title="循环次数" Subtitle="电池充放电的循环次数。" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryCycleCountText" FontSize="14" />
         </wpfui:CardControl>
 
         <wpfui:CardControl x:Name="_batteryManufactureDateCardControl" Margin="0,0,0,8">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Manufacture date" Subtitle="When was the battery manufactured." />
+                <controls:CardHeaderControl Title="生产日期" Subtitle="电池被制造出来的日期。" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryManufactureDateText" FontSize="14" />
         </wpfui:CardControl>
 
         <wpfui:CardControl x:Name="_batteryFirstUseDateCardControl" Margin="0,0,0,8">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="First use date" Subtitle="When was the battery first used." />
+                <controls:CardHeaderControl Title="首次使用" Subtitle="电池第一次被使用的日期。" />
             </wpfui:CardControl.Header>
             <TextBlock x:Name="_batteryFirstUseDateText" FontSize="14" />
         </wpfui:CardControl>

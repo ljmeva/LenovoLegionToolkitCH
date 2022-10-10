@@ -86,10 +86,10 @@ namespace LenovoLegionToolkit.Lib.Utils
             DateTime? startDate = startDateString is null ? null : DateTime.Parse(startDateString);
             DateTime? endDate = endDateString is null ? null : DateTime.Parse(endDateString);
 
-            var status = "In warranty";
+            var status = "在保修期内";
             var now = DateTime.Now;
             if (now > endDate)
-                status = "Expired";
+                status = "已过保";
 
             var link = new Uri($"https://newsupport.lenovo.com.cn/deviceGuarantee.html?fromsource=deviceGuarantee&selname={machineInformation.SerialNumber}");
 

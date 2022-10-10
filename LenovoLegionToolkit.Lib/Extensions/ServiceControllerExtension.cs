@@ -1,50 +1,62 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.ServiceProcess;
-using Windows.Win32;
-using Windows.Win32.Security;
-using Windows.Win32.System.Services;
+using LenovoLegionToolkit.Lib.System;
 
-namespace LenovoLegionToolkit.Lib.Extensions
+namespace System.ServiceProcess
 {
     internal static class ServiceControllerExtension
     {
-        public static unsafe void ChangeStartMode(this ServiceController svc, bool enabled)
+        private const uint SERVICE_NO_CHANGE = 0xFFFFFFFF;
+        private const uint SERVICE_QUERY_CONFIG = 0x00000001;
+        private const uint SERVICE_CHANGE_CONFIG = 0x00000002;
+        private const uint SC_MANAGER_ALL_ACCESS = 0x000F003F;
+
+        public static void ChangeStartMode(this ServiceController svc, ServiceStartMode mode)
         {
-            var scManagerHandle = new SC_HANDLE();
-            var serviceHandle = new SC_HANDLE();
+            var scManagerHandle = IntPtr.Zero;
+            var serviceHandle = IntPtr.Zero;
 
             try
             {
-                scManagerHandle = PInvoke.OpenSCManager(null as string, null, PInvoke.SC_MANAGER_ALL_ACCESS);
+                scManagerHandle = Native.OpenSCManager(null, null, SC_MANAGER_ALL_ACCESS);
                 if (scManagerHandle == IntPtr.Zero)
                     throw new ExternalException("Open Service Manager Error");
 
-                serviceHandle = PInvoke.OpenService(scManagerHandle, svc.ServiceName, PInvoke.SERVICE_CHANGE_CONFIG);
+                serviceHandle = Native.OpenService(
+                    scManagerHandle,
+                    svc.ServiceName,
+                    SERVICE_QUERY_CONFIG | SERVICE_CHANGE_CONFIG);
+
                 if (serviceHandle == IntPtr.Zero)
                     throw new ExternalException("Open Service Error");
 
-                var result = PInvoke.ChangeServiceConfig(serviceHandle,
-                    PInvoke.SERVICE_NO_CHANGE,
-                    enabled ? SERVICE_START_TYPE.SERVICE_AUTO_START : SERVICE_START_TYPE.SERVICE_DISABLED,
-                    SERVICE_ERROR.SERVICE_ERROR_NORMAL,
-                    null as string,
+                var result = Native.ChangeServiceConfig(
+                    serviceHandle,
+                    SERVICE_NO_CHANGE,
+                    (uint)mode,
+                    SERVICE_NO_CHANGE,
                     null,
                     null,
+                    IntPtr.Zero,
                     null,
                     null,
                     null,
                     null);
 
-                if (result)
-                    return;
+                if (result == false)
+                {
+                    var nError = Marshal.GetLastWin32Error();
+                    var win32Exception = new Win32Exception(nError);
+                    throw new ExternalException($"Could not change service start type: {win32Exception.Message}");
+                }
 
-                PInvokeExtensions.ThrowIfWin32Error($"Could not change service: {svc.ServiceName}");
             }
             finally
             {
-                PInvoke.CloseServiceHandle(serviceHandle);
-                PInvoke.CloseServiceHandle(scManagerHandle);
+                if (serviceHandle != IntPtr.Zero)
+                    _ = Native.CloseServiceHandle(serviceHandle);
+                if (scManagerHandle != IntPtr.Zero)
+                    _ = Native.CloseServiceHandle(scManagerHandle);
             }
         }
     }

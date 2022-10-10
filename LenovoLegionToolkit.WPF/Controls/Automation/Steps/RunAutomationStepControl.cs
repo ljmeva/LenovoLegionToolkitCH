@@ -27,8 +27,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
         public RunAutomationStepControl(RunAutomationStep step) : base(step)
         {
             Icon = SymbolRegular.WindowConsole20;
-            Title = "Run";
-            Subtitle = "Run a script or a program.\nMake sure that your script runs correctly first.";
+            Title = "运行";
+            Subtitle = "运行一个脚本或程序。\n请确保脚本或程序无误。";
 
             SizeChanged += RunAutomationStepControl_SizeChanged;
         }

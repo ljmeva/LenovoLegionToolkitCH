@@ -29,8 +29,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
         public PowerModeControl()
         {
             Icon = SymbolRegular.Gauge24;
-            Title = "Power Mode";
-            Subtitle = "Select performance mode.\nYou can switch mode with Fn+Q.";
+            Title = "性能模式";
+            Subtitle = "性能模式切换。\n可使用Fn+Q快速切换。";
 
             _powerModeListener.Changed += PowerModeListener_Changed;
             _powerPlanListener.Changed += PowerPlanListener_Changed;
@@ -54,33 +54,20 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
             {
                 await base.OnStateChange(comboBox, feature, newValue, oldValue);
 
-                if (!comboBox.TryGetSelectedItem(out PowerModeState state))
-                    return;
-
-                var mi = await Compatibility.GetMachineInformationAsync();
-
-                switch (state)
+                if (comboBox.TryGetSelectedItem(out PowerModeState state) && state == PowerModeState.GodMode)
                 {
-                    case PowerModeState.Balance when mi.Properties.SupportsIntelligentSubMode:
-                        _configButton.ToolTip = "Settings";
-                        _configButton.Visibility = Visibility.Visible;
-                        break;
-                    case PowerModeState.GodMode:
-                        _configButton.ToolTip = "Settings";
-                        _configButton.Visibility = Visibility.Visible;
-                        break;
-                    default:
-                        _configButton.ToolTip = null;
-                        _configButton.Visibility = Visibility.Collapsed;
-                        break;
+                    _configButton.ToolTip = "Settings";
+                    _configButton.Visibility = Visibility.Visible;
                 }
+                else
+                    _configButton.Visibility = Visibility.Collapsed;
             }
             catch (InvalidOperationException ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"State change failed.", ex);
+                    Log.Instance.Trace($"切换性能模式失败。", ex);
 
-                await SnackbarHelper.ShowAsync("Couldn't change Power Mode", ex.Message, true);
+                await SnackbarHelper.ShowAsync("无法切换性能模式", ex.Message, true);
             }
         }
 
@@ -100,21 +87,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
 
         private void ConfigButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!_comboBox.TryGetSelectedItem(out PowerModeState state))
-                return;
-
-            if (state == PowerModeState.Balance)
-            {
-                var window = new BalanceModeSettingsWindow
-                {
-                    Owner = Window.GetWindow(this),
-                    WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                    ShowInTaskbar = false,
-                };
-                window.ShowDialog();
-            }
-
-            if (state == PowerModeState.GodMode)
+            if (_comboBox.TryGetSelectedItem(out PowerModeState state) && state == PowerModeState.GodMode)
             {
                 var window = new GodModeSettingsWindow
                 {

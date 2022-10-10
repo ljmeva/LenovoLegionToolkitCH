@@ -43,25 +43,15 @@ namespace LenovoLegionToolkit.Lib.Listeners
             _ => Task.CompletedTask
         };
 
-        private async Task NotifyCameraState(SpecialKey value)
+        private Task NotifyCameraState(SpecialKey value)
         {
-            try
-            {
-                if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-                {
-                    if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring Camera on/off, FnKeys are enabled.");
+            if (value == SpecialKey.CameraOn)
+                MessagingCenter.Publish(new Notification(NotificationIcon.CameraOn, "Camera on", NotificationDuration.Short));
 
-                    return;
-                }
+            if (value == SpecialKey.CameraOff)
+                MessagingCenter.Publish(new Notification(NotificationIcon.CameraOff, "Camera off", NotificationDuration.Short));
 
-                if (value == SpecialKey.CameraOn)
-                    MessagingCenter.Publish(new Notification(NotificationIcon.CameraOn, "Camera on", NotificationDuration.Short));
-
-                if (value == SpecialKey.CameraOff)
-                    MessagingCenter.Publish(new Notification(NotificationIcon.CameraOff, "Camera off", NotificationDuration.Short));
-            }
-            catch { }
+            return Task.CompletedTask;
         }
 
         private async Task ToggleRefreshRateAsync()
@@ -111,22 +101,26 @@ namespace LenovoLegionToolkit.Lib.Listeners
 
         private async Task OpenSnippingTool()
         {
+            if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Ignoring Fn+PrtSc, FnKeys are enabled.");
+
+                return;
+            }
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Starting snipping tool..");
+
             try
             {
-                if (await _fnKeys.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-                {
-                    if (Log.Instance.IsTraceEnabled)
-                        Log.Instance.Trace($"Ignoring Fn+PrtSc, FnKeys are enabled.");
-
-                    return;
-                }
-
-                if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Starting snipping tool..");
-
                 Process.Start("snippingtool");
             }
-            catch { }
+            catch (Exception ex)
+            {
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"Failed to start snipping tool.", ex);
+            }
         }
     }
 }

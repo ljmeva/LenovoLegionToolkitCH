@@ -10,21 +10,18 @@ namespace LenovoLegionToolkit.Lib.Features
 {
     public class PowerModeFeature : AbstractLenovoGamezoneWmiFeature<PowerModeState>
     {
-        private readonly AIModeController _aiModeController;
-        private readonly GodModeController _godModeController;
+        private readonly GodModeController _controller;
         private readonly PowerModeListener _listener;
 
-        public PowerModeFeature(AIModeController aiModeController, GodModeController godModeController, PowerModeListener listener)
-            : base("SmartFanMode", 1, "IsSupportSmartFan")
+        public PowerModeFeature(GodModeController controller, PowerModeListener listener) : base("SmartFanMode", 1, "IsSupportSmartFan")
         {
-            _aiModeController = aiModeController ?? throw new ArgumentNullException(nameof(aiModeController));
-            _godModeController = godModeController ?? throw new ArgumentNullException(nameof(godModeController));
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
             _listener = listener ?? throw new ArgumentNullException(nameof(listener));
         }
 
         public override async Task<PowerModeState[]> GetAllStatesAsync()
         {
-            var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+            var mi = await Compatibility.GetMachineInformation().ConfigureAwait(false);
             if (mi.Properties.SupportsGodMode)
                 return new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.GodMode };
 
@@ -41,10 +38,8 @@ namespace LenovoLegionToolkit.Lib.Features
 
             await base.SetStateAsync(state).ConfigureAwait(false);
 
-            await _aiModeController.StartStopAsync(state).ConfigureAwait(false);
-
             if (state == PowerModeState.GodMode)
-                await _godModeController.ApplyStateAsync().ConfigureAwait(false);
+                await _controller.ApplyStateAsync().ConfigureAwait(false);
 
             await Power.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
 
@@ -56,12 +51,6 @@ namespace LenovoLegionToolkit.Lib.Features
         {
             var state = await GetStateAsync().ConfigureAwait(false);
             await Power.ActivatePowerPlanAsync(state, true).ConfigureAwait(false);
-        }
-
-        public async Task EnsureAIModeIsSetAsync()
-        {
-            var state = await GetStateAsync().ConfigureAwait(false);
-            await _aiModeController.StartStopAsync(state).ConfigureAwait(false);
         }
     }
 }

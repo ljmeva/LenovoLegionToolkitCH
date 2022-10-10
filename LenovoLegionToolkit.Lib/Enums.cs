@@ -4,19 +4,22 @@ namespace LenovoLegionToolkit.Lib
 {
     public enum AlwaysOnUSBState
     {
+        [Display(Name = "禁用")]
         Off,
-        [Display(Name = "On, when sleeping")]
+        [Display(Name = "睡眠时可用")]
         OnWhenSleeping,
-        [Display(Name = "On, always")]
+        [Display(Name = "睡眠和关机时可用")]
         OnAlways
     }
 
 
     public enum BatteryState
     {
+        [Display(Name = "养护模式")]
         Conservation,
+        [Display(Name = "正常模式")]
         Normal,
-        [Display(Name = "Rapid Charge")]
+        [Display(Name = "快充模式")]
         RapidCharge
     }
 
@@ -29,6 +32,7 @@ namespace LenovoLegionToolkit.Lib
 
     public enum FanTableType
     {
+        [Display(Name = "未知")]
         Unknown,
         CPU,
         GPU,
@@ -37,38 +41,47 @@ namespace LenovoLegionToolkit.Lib
 
     public enum FlipToStartState
     {
+        [Display(Name = "关闭")]
         Off,
+        [Display(Name = "打开")]
         On
     }
 
     public enum FnLockState
     {
+        [Display(Name = "关闭")]
         Off,
+        [Display(Name = "打开")]
         On
     }
 
     public enum GSyncState
     {
+        [Display(Name = "打开")]
         On,
+        [Display(Name = "关闭")]
         Off
     }
 
     public enum HybridModeState
     {
-        [Display(Name = "Hybrid Mode", Description = "Automatically switch between iGPU and dGPU.")]
+        [Display(Name = "混合模式", Description = "自动切换独显和核显")]
         On,
-        [Display(Name = "Hybrid-iGPU Only Mode", Description = "Use iGPU only.")]
+        [Display(Name = "核显直连", Description = "仅使用核显")]
         OnIGPUOnly,
-        [Display(Name = "Hybrid-Auto Mode", Description = "Use both iGPU and dGPU when on AC power. Use iGPU only on battery.")]
+        [Display(Name = "自动模式", Description = "按需自动打开混合模式，不使用显卡时打开核显模式")]
         OnAuto,
-        [Display(Name = "dGPU Mode", Description = "Use dGPU only.")]
+        [Display(Name = "独显直连", Description = "仅使用独显，需重启")]
         Off
     }
 
     public enum IGPUModeState
     {
+        [Display(Name = "默认")]
         Default,
+        [Display(Name = "仅使用核显")]
         IGPUOnly,
+        [Display(Name = "自动")]
         Auto
     }
 
@@ -90,12 +103,19 @@ namespace LenovoLegionToolkit.Lib
 
     public enum NotificationIcon
     {
+        [Display(Name = "麦克风已禁用")]
         MicrophoneOff,
+        [Display(Name = "麦克风已启用")]
         MicrophoneOn,
+        [Display(Name = "刷新率")]
         RefreshRate,
+        [Display(Name = "触控板已启用")]
         TouchpadOn,
+        [Display(Name = "触控板已禁用")]
         TouchpadOff,
+        [Display(Name = "摄像头已启用")]
         CameraOn,
+        [Display(Name = "摄像头已禁用")]
         CameraOff
     }
 
@@ -113,29 +133,39 @@ namespace LenovoLegionToolkit.Lib
 
     public enum OverDriveState
     {
+        [Display(Name = "关闭")]
         Off,
+        [Display(Name = "打开")]
         On
     }
 
     public enum PowerAdapterStatus
     {
+        [Display(Name = "已连接")]
         Connected,
+        [Display(Name = "低功率连接")]
         ConnectedLowWattage,
+        [Display(Name = "未连接")]
         Disconnected
     }
 
     public enum PowerModeState
     {
+        [Display(Name = "安静模式")]
         Quiet,
+        [Display(Name = "均衡模式")]
         Balance,
+        [Display(Name = "野兽模式")]
         Performance,
-        [Display(Name = "Custom")]
+        [Display(Name = "自定义模式")]
         GodMode = 254
     }
 
     public enum ProcessEventInfoType
     {
+        [Display(Name = "开启")]
         Started,
+        [Display(Name = "禁用")]
         Stopped
     }
 
@@ -143,44 +173,56 @@ namespace LenovoLegionToolkit.Lib
 
     public enum RGBKeyboardBrightness
     {
+        [Display(Name = "低亮度")]
         Low,
+        [Display(Name = "高亮度")]
         High
     }
 
     public enum RGBKeyboardEffect
     {
+        [Display(Name = "静态")]
         Static,
+        [Display(Name = "呼吸")]
         Breath,
+        [Display(Name = "平滑")]
         Smooth,
-        [Display(Name = "Wave Right")]
+        [Display(Name = "从右往做")]
         WaveRTL,
-        [Display(Name = "Wave Left")]
+        [Display(Name = "从左往右")]
         WaveLTR
     }
 
     public enum RGBKeyboardBacklightPreset
     {
         Off = -1,
-        [Display(Name = "Preset 1")]
+        [Display(Name = "预设 1")]
         One = 0,
-        [Display(Name = "Preset 2")]
+        [Display(Name = "预设 2")]
         Two = 1,
-        [Display(Name = "Preset 3")]
+        [Display(Name = "预设 3")]
         Three = 2
     }
 
     public enum RBGKeyboardSpeed
     {
+        [Display(Name = "最慢")]
         Slowest,
+        [Display(Name = "慢")]
         Slow,
+        [Display(Name = "快")]
         Fast,
+        [Display(Name = "最快")]
         Fastest
     }
 
     public enum SoftwareStatus
     {
+        [Display(Name = "启动")]
         Enabled,
+        [Display(Name = "禁用")]
         Disabled,
+        [Display(Name = "未找到")]
         NotFound
     }
 
@@ -199,8 +241,11 @@ namespace LenovoLegionToolkit.Lib
 
     public enum Theme
     {
+        [Display(Name = "跟随系统")]
         System,
+        [Display(Name = "浅色模式")]
         Light,
+        [Display(Name = "深色模式")]
         Dark
     }
 
@@ -212,7 +257,9 @@ namespace LenovoLegionToolkit.Lib
 
     public enum TouchpadLockState
     {
+        [Display(Name = "关闭")]
         Off,
+        [Display(Name = "打开")]
         On
     }
 
@@ -220,14 +267,19 @@ namespace LenovoLegionToolkit.Lib
 
     public enum WhiteKeyboardBacklightState
     {
+        [Display(Name = "关闭")]
         Off,
+        [Display(Name = "低亮度")]
         Low,
+        [Display(Name = "高亮度")]
         High
     }
 
     public enum WinKeyState
     {
+        [Display(Name = "关闭")]
         Off,
+        [Display(Name = "打开")]
         On
     }
 

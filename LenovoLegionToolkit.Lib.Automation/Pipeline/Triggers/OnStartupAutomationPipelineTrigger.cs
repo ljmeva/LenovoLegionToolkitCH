@@ -7,7 +7,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers
     public class OnStartupAutomationPipelineTrigger : IAutomationPipelineTrigger, IOnStartupAutomationPipelineTrigger, IDisallowDuplicatesAutomationPipelineTrigger
     {
         [JsonIgnore]
-        public string DisplayName => "On startup";
+        public string DisplayName => "Windows启动时";
 
         public Task<bool> IsSatisfiedAsync(IAutomationEvent automationEvent)
         {

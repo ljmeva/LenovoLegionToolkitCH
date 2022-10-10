@@ -8,8 +8,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
         public AlwaysOnUSBControl()
         {
             Icon = SymbolRegular.UsbStick24;
-            Title = "Always on USB";
-            Subtitle = "Charge USB devices, when the computer is off or in sleep or hibernation mode.";
+            Title = "保持USB供电";
+            Subtitle = "当笔记本关闭或睡眠时，仍可使用USB供电。";
         }
     }
 }

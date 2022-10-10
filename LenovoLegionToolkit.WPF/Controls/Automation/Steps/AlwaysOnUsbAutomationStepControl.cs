@@ -9,8 +9,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
         public AlwaysOnUsbAutomationStepControl(IAutomationStep<AlwaysOnUSBState> step) : base(step)
         {
             Icon = SymbolRegular.UsbStick24;
-            Title = "Always on USB";
-            Subtitle = "Charge USB devices, when the computer is off or in sleep or hibernation mode.";
+            Title = "保持USB供电";
+            Subtitle = "关机或睡眠保持USB向外供电";
         }
     }
 }

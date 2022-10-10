@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32.SafeHandles;
 
@@ -27,7 +27,7 @@ namespace LenovoLegionToolkit.Lib.Features
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"Getting state... [feature={GetType().Name}]");
 
-            var outBuffer = await SendCodeAsync(DriverHandle(), ControlCode, GetInBufferValue()).ConfigureAwait(false);
+            var (_, outBuffer) = await SendCodeAsync(DriverHandle(), ControlCode, GetInBufferValue()).ConfigureAwait(false);
             var state = await FromInternalAsync(outBuffer).ConfigureAwait(false);
             LastState = state;
 
@@ -57,17 +57,22 @@ namespace LenovoLegionToolkit.Lib.Features
 
         protected abstract Task<uint[]> ToInternalAsync(T state);
 
-        protected Task<uint> SendCodeAsync(SafeFileHandle handle, uint controlCode, uint inBuffer) => Task.Run(() =>
+        protected Task<(int bytesReturned, uint outBuffer)> SendCodeAsync(SafeFileHandle handle, uint controlCode, uint inBuffer)
         {
-            if (PInvokeExtensions.DeviceIoControl(handle, controlCode, inBuffer, out uint outBuffer))
-                return outBuffer;
+            return Task.Run(() =>
+            {
+                if (!Native.DeviceIoControl(handle, controlCode, ref inBuffer, sizeof(uint), out uint outBuffer, sizeof(uint), out var bytesReturned, IntPtr.Zero))
+                {
+                    var error = Marshal.GetLastWin32Error();
 
-            var error = Marshal.GetLastWin32Error();
+                    if (Log.Instance.IsTraceEnabled)
+                        Log.Instance.Trace($"DeviceIoControl returned 0, last error: {error} [feature={GetType().Name}]");
 
-            if (Log.Instance.IsTraceEnabled)
-                Log.Instance.Trace($"DeviceIoControl returned 0, last error: {error} [feature={GetType().Name}]");
+                    throw new InvalidOperationException($"DeviceIoControl returned 0, last error: {error}");
+                }
 
-            throw new InvalidOperationException($"DeviceIoControl returned 0, last error: {error}");
-        });
+                return (bytesReturned, outBuffer);
+            });
+        }
     }
 }

@@ -12,8 +12,8 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
         public FlipToStartControl()
         {
             Icon = SymbolRegular.Power24;
-            Title = "Flip To Start";
-            Subtitle = "Turn on the laptop when you open the lid.";
+            Title = "开盖启动";
+            Subtitle = "翻开笔记本盖子自动开机。";
         }
     }
 }

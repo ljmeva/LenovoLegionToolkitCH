@@ -16,7 +16,7 @@
             Margin="0,16,0,24"
             FontSize="24"
             FontWeight="Medium"
-            Text="About" />
+            Text="关于" />
 
         <TextBlock
             Padding="0,0,0,8"
@@ -26,7 +26,7 @@
         <TextBlock
             x:Name="_version"
             Padding="0,0,0,8"
-            Text="Version: " />
+            Text="版本: " />
         <TextBlock
             x:Name="_build"
             Padding="0,0,0,16"
@@ -37,21 +37,30 @@
             Padding="0,24,0,8"
             FontSize="14"
             FontWeight="Medium"
-            Text="Links" />
+            Text="项目地址" />
         <wpfui:Hyperlink
-            Content="Project website on GitHub"
+            Content="原版Github仓库"
             Icon="Link24"
             NavigateUri="https://github.com/BartoszCichecki/LenovoLegionToolkit" />
         <wpfui:Hyperlink
-            Content="Latest release on GitHub"
+            Content="原版最新Releases版本"
             Icon="Link24"
             NavigateUri="https://github.com/BartoszCichecki/LenovoLegionToolkit/releases/latest" />
+        <wpfui:Hyperlink
+            Content="中文Github仓库"
+            Icon="Link24"
+            NavigateUri="https://github.com/MZhao-ouo/LenovoLegionToolkitCH" />
+        <wpfui:Hyperlink
+            Content="中文最新Releases版本"
+            Icon="Link24"
+            NavigateUri="https://github.com/MZhao-ouo/LenovoLegionToolkitCH/releases/latest" />
+        
 
         <TextBlock
             Padding="0,24,0,8"
             FontSize="14"
             FontWeight="Medium"
-            Text="3rd party libraries" />
+            Text="第三方依赖库" />
 
         <Grid>
             <Grid.ColumnDefinitions>

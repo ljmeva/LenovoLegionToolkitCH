@@ -50,7 +50,7 @@ namespace LenovoLegionToolkit.WPF.Pages
             _refreshTask = Task.Run(async () =>
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Battery information refresh started...");
+                    Log.Instance.Trace($"正在更新电池信息...");
 
                 while (!token.IsCancellationRequested)
                 {
@@ -66,12 +66,12 @@ namespace LenovoLegionToolkit.WPF.Pages
                     catch (Exception ex)
                     {
                         if (Log.Instance.IsTraceEnabled)
-                            Log.Instance.Trace($"Battery information refresh failed.", ex);
+                            Log.Instance.Trace($"电池信息更新失败。", ex);
                     }
                 }
 
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Battery information refresh stopped.");
+                    Log.Instance.Trace($"电池信息更新终止。");
             }, token);
         }
 
@@ -137,15 +137,15 @@ namespace LenovoLegionToolkit.WPF.Pages
             if (batteryInfo.IsCharging)
             {
                 if (batteryInfo.DischargeRate > 0)
-                    return "Connected, charging...";
+                    return "已连接, 充电中...";
 
-                return "Connected, not charging";
+                return "已连接, 不在充电";
             }
 
             if (batteryInfo.BatteryLifeRemaining < 0)
-                return "Estimating time...";
+                return "正在估算剩余使用时间...";
 
-            return $"Estimated time remaining: {GetTimeString(batteryInfo.BatteryLifeRemaining)}";
+            return $"估计剩余使用时间: {GetTimeString(batteryInfo.BatteryLifeRemaining)}";
         }
 
         private static string GetTimeString(int seconds)

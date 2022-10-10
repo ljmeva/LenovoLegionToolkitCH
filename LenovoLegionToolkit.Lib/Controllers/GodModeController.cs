@@ -496,7 +496,7 @@ namespace LenovoLegionToolkit.Lib.Controllers
         private Task SetFanTable(FanTable fanTable) => WMI.CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_FAN_METHOD",
             "Fan_Set_Table",
-            new() { { "FanTable", fanTable.GetBytes() } });
+            new() { { "FanTable", fanTable.ToBytes() } });
 
         #endregion
 
