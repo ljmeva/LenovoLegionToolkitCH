@@ -46,7 +46,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
 
         private void GpuController_Refreshed(object? sender, GPUController.RefreshedEventArgs e) => Dispatcher.Invoke(() =>
         {
-            var tooltipStringBuilder = new StringBuilder("Performance state:");
+            var tooltipStringBuilder = new StringBuilder("运行状态:");
             tooltipStringBuilder.AppendLine().Append(e.PerformanceState ?? "Unknown").AppendLine().AppendLine();
 
             if (e.Status is GPUController.Status.Unknown or GPUController.Status.NVIDIAGPUNotFound)
@@ -63,7 +63,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
 
                 if (e.ProcessCount > 0)
                 {
-                    processesStringBuilder.Append("Processes:");
+                    processesStringBuilder.Append("显卡上的进程:");
                     foreach (var p in e.Processes)
                     {
                         try
@@ -75,12 +75,12 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
                 }
                 else
                 {
-                    processesStringBuilder.Append("No processes");
+                    processesStringBuilder.Append("显卡上没有进程");
                 }
 
                 _discreteGPUStatusActiveIndicator.Visibility = Visibility.Visible;
                 _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Collapsed;
-                _discreteGPUStatusDescription.Content = "Active";
+                _discreteGPUStatusDescription.Content = "活跃";
                 _gpuInfoButton.ToolTip = tooltipStringBuilder.Append(processesStringBuilder).ToString();
                 _gpuInfoButton.IsEnabled = true;
             }
@@ -88,7 +88,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
             {
                 _discreteGPUStatusActiveIndicator.Visibility = Visibility.Collapsed;
                 _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Visible;
-                _discreteGPUStatusDescription.Content = "Inactive";
+                _discreteGPUStatusDescription.Content = "非活跃";
                 _gpuInfoButton.ToolTip = tooltipStringBuilder.Append("nVidia GPU is not active.").ToString();
                 _gpuInfoButton.IsEnabled = true;
             }
