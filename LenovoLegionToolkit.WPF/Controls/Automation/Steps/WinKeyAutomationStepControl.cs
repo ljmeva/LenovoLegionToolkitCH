@@ -10,7 +10,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps
         {
             Icon = SymbolRegular.Keyboard24;
             Title = "禁用Windows键";
-            Subtitle = "启用 或禁用Windows键。";
+            Subtitle = "启用或禁用Windows键。";
         }
     }
 }

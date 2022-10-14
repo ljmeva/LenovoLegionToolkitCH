@@ -39,7 +39,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Packages
             _descriptionTextBlock.Text = package.Description;
             _descriptionTextBlock.Visibility = string.IsNullOrWhiteSpace(package.Description) ? Visibility.Collapsed : Visibility.Visible;
             _categoryTextBlock.Text = package.Category;
-            _detailTextBlock.Text = $"Version {package.Version}  |  {package.FileSize}  |  {package.FileName}";
+            _detailTextBlock.Text = $"版本号 {package.Version}  |  {package.FileSize}  |  {package.FileName}";
 
             _readmeButton.Visibility = string.IsNullOrWhiteSpace(package.Readme) ? Visibility.Collapsed : Visibility.Visible;
 
@@ -96,21 +96,21 @@ namespace LenovoLegionToolkit.WPF.Controls.Packages
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Not found 404.", ex);
 
-                SnackbarHelper.Show("The file seems to be gone", "Server returned code 404.", true);
+                SnackbarHelper.Show("文件丢失", "服务器返回404代码。", true);
             }
             catch (HttpRequestException ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Error occured when downloading package file.", ex);
+                    Log.Instance.Trace($"下载时发生错误。", ex);
 
-                SnackbarHelper.Show("Something went wrong", "Check if your internet connection is up and running.", true);
+                SnackbarHelper.Show("出错了", "请检查网络连接。", true);
             }
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Error occured when downloading package file.", ex);
+                    Log.Instance.Trace($"下载时发生错误。", ex);
 
-                SnackbarHelper.Show("Something went wrong", ex.Message, true);
+                SnackbarHelper.Show("出错了", ex.Message, true);
             }
             finally
             {
@@ -123,7 +123,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Packages
             }
 
             if (result)
-                await SnackbarHelper.ShowAsync("Download complete", $"{_package.FileName} downloaded!");
+                await SnackbarHelper.ShowAsync("下载完成", $"{_package.FileName} 下载完成！");
         }
 
         private void CancelDownloadButton_Click(object sender, RoutedEventArgs e) => _downloadPackageTokenSource?.Cancel();

@@ -62,7 +62,7 @@
 
                     <wpfui:CardControl x:Name="_cpuLongTermPowerLimitCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Long Term Power Limit" />
+                            <controls:CardHeaderControl Title="Long Term Power Limit" Subtitle="参考翻译：长期功耗限制" />
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -83,7 +83,7 @@
 
                     <wpfui:CardControl x:Name="_cpuShortTermPowerLimitCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Short Term Power Limit" />
+                            <controls:CardHeaderControl Title="Short Term Power Limit" Subtitle="参考翻译：短时功耗限制"/>
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -104,7 +104,7 @@
 
                     <wpfui:CardControl x:Name="_cpuCrossLoadingLimitCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Long Term Power Limit (Cross Loading)" />
+                            <controls:CardHeaderControl Title="Long Term Power Limit (Cross Loading)" Subtitle="参考翻译：长期功耗限制（交叉负载）"/>
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -124,7 +124,7 @@
 
                     <wpfui:CardControl x:Name="_cpuTemperatureLimitCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="CPU Temperature Limit" />
+                            <controls:CardHeaderControl Title="CPU温度限制" />
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -150,7 +150,7 @@
 
                     <wpfui:CardControl x:Name="_gpuPowerBoostCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Dynamic Boost" />
+                            <controls:CardHeaderControl Title="Dynamic Boost" Subtitle="参考翻译：动态提升"/>
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -170,7 +170,7 @@
 
                     <wpfui:CardControl x:Name="_gpuConfigurableTGPCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Configurable TGP" />
+                            <controls:CardHeaderControl Title="Configurable TGP" Subtitle="参考翻译：可编辑的显卡总功率"/>
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -189,7 +189,7 @@
 
                     <wpfui:CardControl x:Name="_gpuTemperatureLimitCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="GPU Temperature Limit" />
+                            <controls:CardHeaderControl Title="GPU温度限制" />
                         </wpfui:CardControl.Header>
                         <StackPanel Orientation="Horizontal">
                             <Slider
@@ -211,12 +211,12 @@
                         Margin="0,16,0,24"
                         FontSize="24"
                         FontWeight="Medium"
-                        Text="Fans" />
+                        Text="风扇" />
 
                     <wpfui:CardControl x:Name="_fanCurveCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
                             <StackPanel>
-                                <controls:CardHeaderControl Title="Fan curve" Subtitle="Fan speed is not strictly determined by one temperature sensor. It will raise or lower speed per the highest sensor between CPU, GPU and Heatsink temperature. Exact values will appear when you hover mouse over each step." />
+                                <controls:CardHeaderControl Title="风扇转速" Subtitle="风扇转速不是直接由温度传感器决定的。它将根据CPU、GPU和散热器温度之间的最高传感器提高或降低速度。把鼠标悬停在小圆点上可查看精确数值。" />
                                 <controls:FanCurveControl x:Name="_fanCurveControl" Margin="0,32,0,0" />
                             </StackPanel>
                         </wpfui:CardControl.Header>
@@ -224,7 +224,7 @@
 
                     <wpfui:CardControl Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="风扇满速转" Subtitle="警告!&#x0a;使用此功能会降低风扇寿命。&#x0a;小心使用！" />
+                            <controls:CardHeaderControl Title="风扇满速转" Subtitle="警告：请小心使用！&#x0a;使用此功能会降低风扇寿命。" />
                         </wpfui:CardControl.Header>
                         <wpfui:ToggleSwitch
                             x:Name="_fanFullSpeedToggle"
@@ -236,7 +236,7 @@
                         Margin="0,16,0,8"
                         FontSize="24"
                         FontWeight="Medium"
-                        Text="Advanced" />
+                        Text="高级选项" />
 
                     <TextBlock
                         Grid.Row="0"
@@ -273,14 +273,14 @@
                 x:Name="_applyButton"
                 Width="120"
                 Click="ApplyButton_Click"
-                Content="Apply" />
+                Content="应用" />
             <wpfui:Button
                 x:Name="_applyAndCloseButton"
                 Width="120"
                 Margin="12,0,0,0"
                 Appearance="Primary"
                 Click="ApplyAndCloseButton_Click"
-                Content="Apply &amp; close" />
+                Content="应用并关闭" />
         </StackPanel>
 
         <wpfui:Snackbar

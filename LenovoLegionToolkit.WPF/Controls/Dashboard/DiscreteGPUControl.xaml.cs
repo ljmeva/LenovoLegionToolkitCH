@@ -89,7 +89,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Dashboard
                 _discreteGPUStatusActiveIndicator.Visibility = Visibility.Collapsed;
                 _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Visible;
                 _discreteGPUStatusDescription.Content = "非活跃";
-                _gpuInfoButton.ToolTip = tooltipStringBuilder.Append("nVidia GPU is not active.").ToString();
+                _gpuInfoButton.ToolTip = tooltipStringBuilder.Append("NVIDIA显卡未激活。").ToString();
                 _gpuInfoButton.IsEnabled = true;
             }
 

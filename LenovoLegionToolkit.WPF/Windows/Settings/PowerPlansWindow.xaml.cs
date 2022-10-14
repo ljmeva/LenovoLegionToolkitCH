@@ -13,7 +13,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings
 {
     public partial class PowerPlansWindow
     {
-        private static readonly object DEFAULT_VALUE = new string("(Default)");
+        private static readonly object DEFAULT_VALUE = new string("(默认)");
 
         private readonly PowerModeFeature _powerModeFeature = IoCContainer.Resolve<PowerModeFeature>();
         private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
@@ -129,10 +129,10 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings
 
             if (state.Value && !await MessageBoxHelper.ShowAsync(
                 this,
-                "Are you sure?",
-                "Enabling this option when Lenovo Vantage is running and it changes power plans on your laptop might result in unexpected behavior.",
-                "Yes, enable",
-                "No, do not enable"))
+                "你确定吗？",
+                "当Lenovo Vantage运行时，启用该选项并改变笔记本上的电源计划可能会导致意外行为。",
+                "是的，自愿承担风险",
+                "不，还是算了"))
             {
                 _activatePowerProfilesWithVantageEnabledToggle.IsChecked = false;
                 return;

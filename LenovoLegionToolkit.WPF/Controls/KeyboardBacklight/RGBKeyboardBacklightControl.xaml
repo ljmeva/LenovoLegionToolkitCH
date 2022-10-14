@@ -40,7 +40,7 @@
             Margin="0,0,8,24"
             Icon="Warning24">
             <wpfui:CardControl.Header>
-                <controls:CardHeaderControl Title="Lenovo Vantage seems to be enabled" Subtitle="Keyboard backlight cannot be controlled in here, when Vantage and/or it's services are running, due to conflicts between the two." />
+                <controls:CardHeaderControl Title="Lenovo Vantage似乎正在运行" Subtitle="Lenovo Vantage与LLT会发生冲突，需要先禁用Vantage才能用LLT修改键盘光效。" />
             </wpfui:CardControl.Header>
         </wpfui:CardControl>
 
@@ -51,7 +51,7 @@
             Margin="0,0,8,24"
             HorizontalAlignment="Stretch"
             Click="PresetButton_Click"
-            Content="Off"
+            Content="关闭"
             Tag="{x:Static lib:RGBKeyboardBacklightPreset.Off}" />
         <wpfui:Button
             x:Name="_preset1Button"
@@ -60,7 +60,7 @@
             Margin="0,0,8,24"
             HorizontalAlignment="Stretch"
             Click="PresetButton_Click"
-            Content="Preset 1"
+            Content="预设 1"
             Tag="{x:Static lib:RGBKeyboardBacklightPreset.One}" />
         <wpfui:Button
             x:Name="_preset2Button"
@@ -69,7 +69,7 @@
             Margin="0,0,8,24"
             HorizontalAlignment="Stretch"
             Click="PresetButton_Click"
-            Content="Preset 2"
+            Content="预设 2"
             Tag="{x:Static lib:RGBKeyboardBacklightPreset.Two}" />
         <wpfui:Button
             x:Name="_preset3Button"
@@ -78,7 +78,7 @@
             Margin="0,0,8,24"
             HorizontalAlignment="Stretch"
             Click="PresetButton_Click"
-            Content="Preset 3"
+            Content="预设 3"
             Tag="{x:Static lib:RGBKeyboardBacklightPreset.Three}" />
 
         <kb:RGBKeyboardBrightnessCardControl
