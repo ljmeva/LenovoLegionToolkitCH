@@ -41,7 +41,7 @@
                 VerticalAlignment="Center"
                 FontSize="12"
                 IsHitTestVisible="False"
-                Text="Power Plans" />
+                Text="性能模式对应电源计划" />
 
         </Grid>
 
@@ -56,7 +56,7 @@
 
                     <wpfui:CardControl Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Quiet mode" Subtitle="Windows Power Plan to be activated when you switch to Quiet power mode." />
+                            <controls:CardHeaderControl Title="安静模式" Subtitle="选择切换到安静模式时激活的Windows电源计划。" />
                         </wpfui:CardControl.Header>
                         <ComboBox
                             x:Name="_quietModeComboBox"
@@ -67,7 +67,7 @@
 
                     <wpfui:CardControl Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Balance mode" Subtitle="Windows Power Plan to be activated when you switch to Balance power mode." />
+                            <controls:CardHeaderControl Title="均衡模式" Subtitle="选择切换到均衡模式时激活的Windows电源计划。" />
                         </wpfui:CardControl.Header>
                         <ComboBox
                             x:Name="_balanceModeComboBox"
@@ -78,7 +78,7 @@
 
                     <wpfui:CardControl Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Performance mode" Subtitle="Windows Power Plan to be activated when you switch to Performance power mode." />
+                            <controls:CardHeaderControl Title="野兽模式" Subtitle="选择切换到野兽模式时激活的Windows电源计划。" />
                         </wpfui:CardControl.Header>
                         <ComboBox
                             x:Name="_performanceModeComboBox"
@@ -89,7 +89,7 @@
 
                     <wpfui:CardControl x:Name="_godModeCardControl" Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Custom mode" Subtitle="Windows Power Plan to be activated when you switch to Custom power mode." />
+                            <controls:CardHeaderControl Title="自定义模式" Subtitle="选择切换到自定义模式时激活的Windows电源计划。" />
                         </wpfui:CardControl.Header>
                         <ComboBox
                             x:Name="_godModeComboBox"
@@ -100,7 +100,7 @@
 
                     <wpfui:CardControl Margin="0,0,0,8">
                         <wpfui:CardControl.Header>
-                            <controls:CardHeaderControl Title="Always activate Windows Power Plan" Subtitle="Activate Power Plan even when Vantage is enabled.&#x0a;This option is intended only for devices that didn't come with multiple power plans." />
+                            <controls:CardHeaderControl Title="总是激活Windows电源计划" Subtitle="即使Vantage未禁用也可使用本页调好的电源计划。&#x0a;本选项主要是为了没有多电源计划的设备。" />
                         </wpfui:CardControl.Header>
                         <wpfui:ToggleSwitch
                             x:Name="_activatePowerProfilesWithVantageEnabledToggle"

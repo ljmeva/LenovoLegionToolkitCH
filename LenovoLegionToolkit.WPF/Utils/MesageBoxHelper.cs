@@ -14,8 +14,8 @@ namespace LenovoLegionToolkit.WPF.Utils
             DependencyObject dependencyObject,
             string title,
             string message,
-            string leftButton = "Yes",
-            string rightButton = "No"
+            string leftButton = "是",
+            string rightButton = "否"
         )
         {
             return ShowAsync(Window.GetWindow(dependencyObject), title, message, leftButton, rightButton);
@@ -25,8 +25,8 @@ namespace LenovoLegionToolkit.WPF.Utils
             Window window,
             string title,
             string message,
-            string primaryButton = "Yes",
-            string secondaryButton = "No"
+            string primaryButton = "是",
+            string secondaryButton = "否"
         )
         {
             var tcs = new TaskCompletionSource<bool>();
@@ -71,7 +71,7 @@ namespace LenovoLegionToolkit.WPF.Utils
             string? placeholder = null,
             string? text = null,
             string primaryButton = "OK",
-            string secondaryButton = "Cancel",
+            string secondaryButton = "取消",
             bool allowEmpty = false
         )
         {
@@ -84,7 +84,7 @@ namespace LenovoLegionToolkit.WPF.Utils
             string? placeholder = null,
             string? text = null,
             string primaryButton = "OK",
-            string secondaryButton = "Cancel",
+            string secondaryButton = "取消",
             bool allowEmpty = false
         )
         {

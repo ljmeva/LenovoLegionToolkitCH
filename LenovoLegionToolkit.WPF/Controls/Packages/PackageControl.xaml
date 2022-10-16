@@ -86,7 +86,7 @@
                     Foreground="{DynamicResource SystemFillColorCautionBrush}"
                     TextTrimming="CharacterEllipsis"
                     Visibility="Collapsed">
-                    This package is more than a year old.
+                    这个安装包距今已有一年多了。。。
                 </TextBlock>
 
                 <StackPanel

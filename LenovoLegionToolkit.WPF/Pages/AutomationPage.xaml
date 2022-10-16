@@ -35,7 +35,7 @@
                         Text="自动化" />
 
                     <TextBlock Margin="0,8,0,0">
-                        启用后下列自动化将自动执行。当检测到条件符合，所有令指将从上往下执行。</TextBlock>
+                        启用后下列自动化将自动执行。当检测到条件符合，所有指令将从上往下执行。</TextBlock>
                 </StackPanel>
 
                 <controls:LoadableControl

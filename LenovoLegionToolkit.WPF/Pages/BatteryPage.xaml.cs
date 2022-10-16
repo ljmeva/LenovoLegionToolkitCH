@@ -155,10 +155,10 @@ namespace LenovoLegionToolkit.WPF.Pages
 
             var hours = timeSpan.Hours;
             if (hours > 0)
-                result += $"{hours} hour{(hours == 1 ? "" : "s")} ";
+                result += $"{hours}h ";
 
             var minutes = timeSpan.Minutes;
-            result += $"{minutes} minute{(minutes == 1 ? "" : "s")}";
+            result += $"{minutes}min";
 
             return result;
         }

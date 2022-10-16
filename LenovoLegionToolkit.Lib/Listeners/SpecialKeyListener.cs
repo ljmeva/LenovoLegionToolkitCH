@@ -46,10 +46,10 @@ namespace LenovoLegionToolkit.Lib.Listeners
         private Task NotifyCameraState(SpecialKey value)
         {
             if (value == SpecialKey.CameraOn)
-                MessagingCenter.Publish(new Notification(NotificationIcon.CameraOn, "Camera on", NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationIcon.CameraOn, "摄像头  开", NotificationDuration.Short));
 
             if (value == SpecialKey.CameraOff)
-                MessagingCenter.Publish(new Notification(NotificationIcon.CameraOff, "Camera off", NotificationDuration.Short));
+                MessagingCenter.Publish(new Notification(NotificationIcon.CameraOff, "摄像头  关", NotificationDuration.Short));
 
             return Task.CompletedTask;
         }

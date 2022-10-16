@@ -10,7 +10,7 @@
     mc:Ignorable="d">
     <wpfui:CardExpander x:Name="_expander" Margin="0,8,0,0">
         <wpfui:CardExpander.Header>
-            <controls:CardHeaderControl x:Name="_headerControl" Title="Power plans" />
+            <controls:CardHeaderControl x:Name="_headerControl" Title="Windows电源计划" />
         </wpfui:CardExpander.Header>
 
         <Grid>
@@ -27,12 +27,12 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 VerticalAlignment="Center"
-                Text="Plugged in" />
+                Text="插电时" />
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="0"
                 VerticalAlignment="Center"
-                Text="On battery" />
+                Text="使用电池时" />
             <ComboBox
                 x:Name="_comboBoxAC"
                 Grid.Row="0"

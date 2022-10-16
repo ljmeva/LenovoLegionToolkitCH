@@ -131,7 +131,7 @@
 
         <wpfui:CardAction Margin="0,0,0,8" Click="PowerPlans_Click">
             <wpfui:CardAction.Content>
-                <controls:CardHeaderControl Title="电源计划" />
+                <controls:CardHeaderControl Title="修改性能模式对应的Windows电源计划" />
             </wpfui:CardAction.Content>
         </wpfui:CardAction>
 

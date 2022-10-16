@@ -221,7 +221,7 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
                 result += $" | {AutomationPipeline.Trigger.DisplayName}";
 
             if (AutomationPipeline.Trigger is IPowerModeAutomationPipelineTrigger p)
-                result += $" | Power Mode: {p.PowerModeState.GetDisplayName()}";
+                result += $" | 性能模式: {p.PowerModeState.GetDisplayName()}";
 
             if (AutomationPipeline.Trigger is IProcessesAutomationPipelineTrigger pt && pt.Processes.Any())
                 result += $" | Apps: {string.Join(", ", pt.Processes.Select(p => p.Name))}";
@@ -229,13 +229,13 @@ namespace LenovoLegionToolkit.WPF.Controls.Automation.Pipeline
             if (AutomationPipeline.Trigger is ITimeAutomationPipelineTrigger tt)
             {
                 if (tt.IsSunrise)
-                    result += " | At sunrise";
+                    result += " | 在日出";
                 if (tt.IsSunset)
-                    result += " | At sunset";
+                    result += " | 在日落";
                 if (tt.Time is not null)
                 {
                     var local = DateTimeExtensions.UtcFrom(tt.Time.Value.Hour, tt.Time.Value.Minute).ToLocalTime();
-                    result += $" | At {local.Hour:D2}:{local.Minute:D2}";
+                    result += $" | 在 {local.Hour:D2}:{local.Minute:D2}";
                 }
             }
 

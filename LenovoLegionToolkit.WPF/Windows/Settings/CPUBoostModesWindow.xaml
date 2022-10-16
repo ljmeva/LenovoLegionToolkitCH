@@ -41,7 +41,7 @@
                 VerticalAlignment="Center"
                 FontSize="12"
                 IsHitTestVisible="False"
-                Text="CPU Boost Modes" />
+                Text="CPU提升模式" />
 
         </Grid>
 

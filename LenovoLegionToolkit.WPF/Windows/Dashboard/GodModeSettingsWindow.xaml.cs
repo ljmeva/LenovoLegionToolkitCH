@@ -80,7 +80,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Dashboard
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't load settings.", ex);
+                    Log.Instance.Trace($"无法加载设置。", ex);
 
                 await _snackBar.ShowAsync("Couldn't load setting.", ex.Message);
 
@@ -155,7 +155,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Dashboard
             catch (Exception ex)
             {
                 if (Log.Instance.IsTraceEnabled)
-                    Log.Instance.Trace($"Couldn't apply settings", ex);
+                    Log.Instance.Trace($"无法应用设置。", ex);
 
                 await _snackBar.ShowAsync("Couldn't apply settings", ex.Message);
             }

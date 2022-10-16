@@ -24,6 +24,10 @@
             FontWeight="Medium"
             Text="Lenovo Legion Toolkit" />
         <TextBlock
+            x:Name="_ChineseVersion"
+            Padding="0,0,0,8"
+            Text="汉化 by @MZhao" />
+        <TextBlock
             x:Name="_version"
             Padding="0,0,0,8"
             Text="版本: " />

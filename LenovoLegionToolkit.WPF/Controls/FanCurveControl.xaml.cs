@@ -233,7 +233,7 @@ namespace LenovoLegionToolkit.WPF.Controls
             };
 
             private readonly TextBlock _desc1 = new() { Text = "CPU:", Margin = new(0, 0, 8, 0) };
-            private readonly TextBlock _desc2 = new() { Text = "CPU Sensor:", Margin = new(0, 0, 8, 0) };
+            private readonly TextBlock _desc2 = new() { Text = "CPU传感器:", Margin = new(0, 0, 8, 0) };
             private readonly TextBlock _desc3 = new() { Text = "GPU:", Margin = new(0, 0, 8, 0) };
 
             private readonly TextBlock _value1 = new();

@@ -135,18 +135,18 @@ namespace LenovoLegionToolkit.Lib.Listeners
                         var enabled = Microphone.Toggle();
 
                         if (enabled)
-                            MessagingCenter.Publish(new Notification(NotificationIcon.MicrophoneOn, "Microphone on", NotificationDuration.Short));
+                            MessagingCenter.Publish(new Notification(NotificationIcon.MicrophoneOn, "麦克风  开", NotificationDuration.Short));
                         else
-                            MessagingCenter.Publish(new Notification(NotificationIcon.MicrophoneOff, "Microphone off", NotificationDuration.Short));
+                            MessagingCenter.Publish(new Notification(NotificationIcon.MicrophoneOff, "麦克风  关", NotificationDuration.Short));
 
                         break;
                     case DriverKey.Fn_F10:
                         var status = await _touchpadLockFeature.GetStateAsync().ConfigureAwait(false);
 
                         if (status == TouchpadLockState.Off)
-                            MessagingCenter.Publish(new Notification(NotificationIcon.TouchpadOn, "Touchpad on", NotificationDuration.Short));
+                            MessagingCenter.Publish(new Notification(NotificationIcon.TouchpadOn, "触控板  开", NotificationDuration.Short));
                         else
-                            MessagingCenter.Publish(new Notification(NotificationIcon.TouchpadOff, "Touchpad off", NotificationDuration.Short));
+                            MessagingCenter.Publish(new Notification(NotificationIcon.TouchpadOff, "触控板  关", NotificationDuration.Short));
 
                         break;
                     case DriverKey.Fn_F8:
