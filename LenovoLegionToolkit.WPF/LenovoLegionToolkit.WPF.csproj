@@ -45,6 +45,7 @@
 		<PackageReference Include="WPF-UI" Version="2.0.2" />
 	</ItemGroup>
 	<ItemGroup>
+		<ProjectReference Include="..\CCDWrapper\CCDWrapper.csproj" />
 		<ProjectReference Include="..\LenovoLegionToolkit.Lib\LenovoLegionToolkit.Lib.csproj" />
 		<ProjectReference Include="..\LenovoLegionToolkit.Lib.Automation\LenovoLegionToolkit.Lib.Automation.csproj" />
 	</ItemGroup>

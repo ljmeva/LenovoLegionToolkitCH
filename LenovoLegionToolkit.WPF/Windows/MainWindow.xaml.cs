@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using System.Windows.Media.Animation;
+using CCD;
+using CCD.Enum;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Settings;
@@ -214,7 +217,40 @@ namespace LenovoLegionToolkit.WPF.Windows
                 handled = true;
             }
 
+            if (msg == 0x007e) 
+            {
+                ResetHWMonitorDPI();
+            }
+
             return IntPtr.Zero;
+        }
+
+        private void ResetHWMonitorDPI()
+        {
+            DisplayConfigTopologyId topologyId;
+            var list = CCDHelpers.GetPathWraps(QueryDisplayFlags.OnlyActivePaths, out topologyId);
+            foreach (var item in list)
+            {
+                var sourceModeInfo = item.Path.sourceInfo;
+                var targetModeInfo = item.Path.targetInfo;
+                var name = CCDHelpers.GetTargetDeviceName(targetModeInfo);
+
+                if (!name.StartsWith("HW", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    continue;
+                }
+
+                var dpiInfo = CCDHelpers.GetDPIScalingInfo(sourceModeInfo.adapterId, sourceModeInfo.id);
+
+                if (Log.Instance.IsTraceEnabled)
+                    Log.Instance.Trace($"hw screen name: {name}, current dpi: {dpiInfo.current}");
+
+                if (dpiInfo.current != dpiInfo.recommended)
+                {
+                    var result = CCDHelpers.SetDPIScaling(sourceModeInfo.adapterId, sourceModeInfo.id, dpiInfo.recommended);
+                    Log.Instance.Trace($"set recommended dpi: {dpiInfo.recommended}");
+                }
+            }
         }
 
         private void LoadDeviceInfo()
